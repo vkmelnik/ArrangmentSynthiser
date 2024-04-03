@@ -17,6 +17,10 @@ class EditorViewController: UIViewController {
     var toolbar = EditorToolbarView()
     var pianoRoll: PianoRollView? = nil
 
+    var algorithmsView = AlgorithmsView()
+    var algorithmsViewOffConstraint: NSLayoutConstraint?
+    var algorithmsViewOnConstraint: NSLayoutConstraint?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(white: 0.1, alpha: 1)
@@ -24,9 +28,20 @@ class EditorViewController: UIViewController {
     }
 
     private func configureUI() {
-        settingsViewController.slider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
+        settingsViewController.tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
+        settingsViewController.lengthSlider.slider.addTarget(self, action: #selector(onLengthChange), for: .valueChanged)
         configureToolbar()
         configurePianoRoll()
+        configureAlgorithmsView()
+    }
+
+    private func configureAlgorithmsView() {
+        view.addSubview(algorithmsView)
+        algorithmsView.pinTop(to: toolbar.bottomAnchor)
+        algorithmsView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor)
+        algorithmsViewOnConstraint = algorithmsView.pinRight(to: view)
+        algorithmsViewOnConstraint?.isActive = false
+        algorithmsViewOffConstraint = algorithmsView.pinLeft(to: view.trailingAnchor)
     }
 
     private func configureToolbar() {
@@ -38,6 +53,7 @@ class EditorViewController: UIViewController {
         toolbar.playButton.addTarget(self, action: #selector(onPlayButton), for: .touchUpInside)
         toolbar.selectButton.addTarget(self, action: #selector(onSelectButton), for: .touchUpInside)
         toolbar.settingsButton.addTarget(self, action: #selector(onSettingsButton), for: .touchUpInside)
+        toolbar.algorithmsButton.addTarget(self, action: #selector(onAlgorithmsButton), for: .touchUpInside)
     }
 
     private func configurePianoRoll() {
@@ -58,7 +74,7 @@ class EditorViewController: UIViewController {
 
     @objc
     private func onPlayButton() {
-        if var selectionModel = selectionModel {
+        if let selectionModel = selectionModel {
             guard let start = selectionModel.notes.min(by: { note1, note2 in
                 note1.start < note2.start
             })?.start else {
@@ -94,6 +110,21 @@ class EditorViewController: UIViewController {
     @objc
     private func onTempoChange(sender: UISlider, forEvent event: UIEvent) {
         audio.setTempo(Double(Int(sender.value)))
+    }
+
+    @objc
+    private func onLengthChange(sender: UISlider, forEvent event: UIEvent) {
+        pianoRoll?.pianoRollSettings.length = Int(sender.value)
+    }
+
+    @objc
+    private func onAlgorithmsButton(sender: UISlider, forEvent event: UIEvent) {
+        let isActive = algorithmsViewOnConstraint?.isActive ?? false
+        algorithmsViewOnConstraint?.isActive = !isActive
+        algorithmsViewOffConstraint?.isActive = isActive
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 

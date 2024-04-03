@@ -8,7 +8,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    var slider = SliderView(name: "Темп: 120", value: 120, minimum: 10, maximum: 280)
+    var tempoSlider = SliderView(name: "Темп: 120", value: 120, minimum: 10, maximum: 280)
+    var lengthSlider = SliderView(name: "Длина трека: 120", value: 32, minimum: 16, maximum: 128)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,17 +18,25 @@ class SettingsViewController: UIViewController {
     }
 
     private func configureUI() {
-        let stack = UIStackView(arrangedSubviews: [slider])
-        stack.alignment = .center
+        let stack = UIStackView(arrangedSubviews: [tempoSlider, lengthSlider])
+        stack.axis = .vertical
         view.addSubview(stack)
         stack.pinHorizontal(to: view, 20)
-        stack.pinVertical(to: view)
-        slider.title.textColor = .white
-        slider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
+        stack.pinCenterY(to: view)
+        tempoSlider.title.textColor = .white
+        tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
+
+        lengthSlider.title.textColor = .white
+        lengthSlider.slider.addTarget(self, action: #selector(onLengthChange), for: .valueChanged)
     }
 
     @objc
     private func onTempoChange(sender: UISlider, forEvent event: UIEvent) {
-        slider.title.text = "Темп: \(Int(sender.value))"
+        tempoSlider.title.text = "Темп: \(Int(sender.value))"
+    }
+
+    @objc
+    private func onLengthChange(sender: UISlider, forEvent event: UIEvent) {
+        lengthSlider.title.text = "Длина трека: \(Int(sender.value))"
     }
 }

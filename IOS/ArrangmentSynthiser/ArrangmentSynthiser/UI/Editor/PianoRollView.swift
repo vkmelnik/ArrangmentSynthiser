@@ -77,6 +77,10 @@ struct PianoRollView: View {
             }
         }.scrollDisabled(!pianoRollSettings.scrollViewOn).background(Color(white: 0.1)).onChange(of: model) { newValue in
             pianoRollDelegate?.onNotesChange(newValue)
+        }.onChange(of: pianoRollSettings.length) { newValue in
+            model = PianoRollModel(notes: model.notes.filter({ note in
+                Int(note.start) < pianoRollSettings.length
+            }), length: pianoRollSettings.length, height: model.height)
         }
     }
 }

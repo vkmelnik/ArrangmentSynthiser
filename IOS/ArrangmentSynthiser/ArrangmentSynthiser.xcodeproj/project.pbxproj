@@ -28,6 +28,7 @@
 		DADA867D2BBDB1A9006BC789 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA867C2BBDB1A9006BC789 /* SliderView.swift */; };
 		DADA86802BBDB976006BC789 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = DADA867F2BBDB976006BC789 /* Keyboard */; };
 		DADA86832BBDBBF5006BC789 /* FalseKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86822BBDBBF5006BC789 /* FalseKeyboard.swift */; };
+		DADA86882BBDD4BB006BC789 /* AlgorithmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86872BBDD4BB006BC789 /* AlgorithmsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		DADA86792BBDB15E006BC789 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DADA867C2BBDB1A9006BC789 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		DADA86822BBDBBF5006BC789 /* FalseKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalseKeyboard.swift; sourceTree = "<group>"; };
+		DADA86872BBDD4BB006BC789 /* AlgorithmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsView.swift; sourceTree = "<group>"; };
 		ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.release.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 		DA5809242B5995FE00E49A0A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DADA86862BBDD4AB006BC789 /* Algorithms */,
 				DADA867B2BBDB19E006BC789 /* Common */,
 				DADA86782BBDB14E006BC789 /* Settings */,
 				DADA86652BBC29B3006BC789 /* Extensions */,
@@ -207,6 +210,14 @@
 				DADA86822BBDBBF5006BC789 /* FalseKeyboard.swift */,
 			);
 			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		DADA86862BBDD4AB006BC789 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				DADA86872BBDD4BB006BC789 /* AlgorithmsView.swift */,
+			);
+			path = Algorithms;
 			sourceTree = "<group>";
 		};
 		E2EFC2405E74318607988A55 /* Frameworks */ = {
@@ -325,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADA86882BBDD4BB006BC789 /* AlgorithmsView.swift in Sources */,
 				DADA86772BBD9715006BC789 /* PianoRollSettings.swift in Sources */,
 				DADA867D2BBDB1A9006BC789 /* SliderView.swift in Sources */,
 				DADA86832BBDBBF5006BC789 /* FalseKeyboard.swift in Sources */,

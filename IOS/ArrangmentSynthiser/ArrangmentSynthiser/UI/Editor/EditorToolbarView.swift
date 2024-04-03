@@ -24,17 +24,27 @@ class EditorToolbarView: UIView {
         button.setTitle("Настройки", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
         button.setHeight(40)
-        button.setWidth(100)
+        button.setWidth(120)
 
         return button
     }()
 
     lazy var selectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Подвинуть", for: .normal)
+        button.setTitle("Выделить", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
         button.setHeight(40)
-        button.setWidth(100)
+        button.setWidth(120)
+
+        return button
+    }()
+
+    lazy var algorithmsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Алгоритмы", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
+        button.setHeight(40)
+        button.setWidth(150)
 
         return button
     }()
@@ -58,6 +68,12 @@ class EditorToolbarView: UIView {
         selectButton.pinCenterY(to: self)
         selectButton.layoutIfNeeded()
         selectButton.makeRetroUI()
+
+        addSubview(algorithmsButton)
+        algorithmsButton.pinRight(to: self, 20)
+        algorithmsButton.pinCenterY(to: self)
+        algorithmsButton.layoutIfNeeded()
+        algorithmsButton.makeRetroUI()
     }
 
     required init?(coder: NSCoder) {

@@ -8,5 +8,6 @@
 import Foundation
 
 class PianoRollSettings: ObservableObject {
-    @Published var scrollViewOn: Bool = false
+    @Published var length: Int = 32
+    @Published var scrollViewOn: Bool = true
 }
