@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A76D9DEEA964C1E55EA26C67 /* Pods_ArrangmentSynthiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9975A2C5E80D6A657E39D4 /* Pods_ArrangmentSynthiser.framework */; };
+		DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58090F2B5995DD00E49A0A /* AppDelegate.swift */; };
+		DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809112B5995DD00E49A0A /* SceneDelegate.swift */; };
+		DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809132B5995DD00E49A0A /* EditorViewController.swift */; };
+		DA5809192B5995E900E49A0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5809182B5995E900E49A0A /* Assets.xcassets */; };
+		DA58091C2B5995E900E49A0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA58091A2B5995E900E49A0A /* LaunchScreen.storyboard */; };
+		DADA865B2BBC0905006BC789 /* EditorAudioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */; };
+		DADA86602BBC0DDC006BC789 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DADA865F2BBC0DDC006BC789 /* AudioKit */; };
+		DADA86642BBC107C006BC789 /* DunneAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DADA86632BBC107C006BC789 /* DunneAudioKit */; };
+		DADA86672BBC29C0006BC789 /* View+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86662BBC29C0006BC789 /* View+Style.swift */; };
+		DADA86692BBC2B25006BC789 /* View+Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86682BBC2B25006BC789 /* View+Pin.swift */; };
+		DADA866C2BBC4BA7006BC789 /* PianoRoll in Frameworks */ = {isa = PBXBuildFile; productRef = DADA866B2BBC4BA7006BC789 /* PianoRoll */; };
+		DADA866E2BBC4CE8006BC789 /* SwitUIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA866D2BBC4CE8006BC789 /* SwitUIAdapter.swift */; };
+		DADA86702BBC4F00006BC789 /* PianoRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA866F2BBC4F00006BC789 /* PianoRollView.swift */; };
+		DADA86732BBC5069006BC789 /* PianoRollLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86722BBC5069006BC789 /* PianoRollLogic.swift */; };
+		DADA86752BBD8DD4006BC789 /* EditorToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86742BBD8DD4006BC789 /* EditorToolbarView.swift */; };
+		DADA86772BBD9715006BC789 /* PianoRollSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86762BBD9715006BC789 /* PianoRollSettings.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1BAB6C5D727B048765A5022C /* Pods-ArrangmentSynthiser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.debug.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.debug.xcconfig"; sourceTree = "<group>"; };
+		9C9975A2C5E80D6A657E39D4 /* Pods_ArrangmentSynthiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArrangmentSynthiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrangmentSynthiser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA58090F2B5995DD00E49A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DA5809112B5995DD00E49A0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DA5809132B5995DD00E49A0A /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		DA5809182B5995E900E49A0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA58091B2B5995E900E49A0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA58091D2B5995E900E49A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorAudioInteractor.swift; sourceTree = "<group>"; };
+		DADA86662BBC29C0006BC789 /* View+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Style.swift"; sourceTree = "<group>"; };
+		DADA86682BBC2B25006BC789 /* View+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Pin.swift"; sourceTree = "<group>"; };
+		DADA866D2BBC4CE8006BC789 /* SwitUIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitUIAdapter.swift; sourceTree = "<group>"; };
+		DADA866F2BBC4F00006BC789 /* PianoRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoRollView.swift; sourceTree = "<group>"; };
+		DADA86722BBC5069006BC789 /* PianoRollLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoRollLogic.swift; sourceTree = "<group>"; };
+		DADA86742BBD8DD4006BC789 /* EditorToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorToolbarView.swift; sourceTree = "<group>"; };
+		DADA86762BBD9715006BC789 /* PianoRollSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoRollSettings.swift; sourceTree = "<group>"; };
+		ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.release.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DA5809092B5995DD00E49A0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DADA86602BBC0DDC006BC789 /* AudioKit in Frameworks */,
+				DADA866C2BBC4BA7006BC789 /* PianoRoll in Frameworks */,
+				A76D9DEEA964C1E55EA26C67 /* Pods_ArrangmentSynthiser.framework in Frameworks */,
+				DADA86642BBC107C006BC789 /* DunneAudioKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D6F9DDA523FA2222ABA3B7F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1BAB6C5D727B048765A5022C /* Pods-ArrangmentSynthiser.debug.xcconfig */,
+				ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DA5809032B5995DD00E49A0A = {
+			isa = PBXGroup;
+			children = (
+				DA58090E2B5995DD00E49A0A /* ArrangmentSynthiser */,
+				DA58090D2B5995DD00E49A0A /* Products */,
+				0D6F9DDA523FA2222ABA3B7F /* Pods */,
+				E2EFC2405E74318607988A55 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DA58090D2B5995DD00E49A0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA58090E2B5995DD00E49A0A /* ArrangmentSynthiser */ = {
+			isa = PBXGroup;
+			children = (
+				DADA865C2BBC0AC8006BC789 /* Sounds */,
+				DADA86582BBC07D6006BC789 /* App */,
+				DA5809252B59960A00E49A0A /* Models */,
+				DA5809242B5995FE00E49A0A /* UI */,
+				DA5809232B5995F200E49A0A /* Network */,
+				DA5809182B5995E900E49A0A /* Assets.xcassets */,
+				DA58091A2B5995E900E49A0A /* LaunchScreen.storyboard */,
+				DA58091D2B5995E900E49A0A /* Info.plist */,
+			);
+			path = ArrangmentSynthiser;
+			sourceTree = "<group>";
+		};
+		DA5809232B5995F200E49A0A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DA5809242B5995FE00E49A0A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DADA86652BBC29B3006BC789 /* Extensions */,
+				DADA86592BBC0826006BC789 /* Editor */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		DA5809252B59960A00E49A0A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DADA86582BBC07D6006BC789 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DA58090F2B5995DD00E49A0A /* AppDelegate.swift */,
+				DA5809112B5995DD00E49A0A /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		DADA86592BBC0826006BC789 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				DADA86712BBC505B006BC789 /* Protocols */,
+				DA5809132B5995DD00E49A0A /* EditorViewController.swift */,
+				DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */,
+				DADA866F2BBC4F00006BC789 /* PianoRollView.swift */,
+				DADA86742BBD8DD4006BC789 /* EditorToolbarView.swift */,
+				DADA86762BBD9715006BC789 /* PianoRollSettings.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		DADA865C2BBC0AC8006BC789 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		DADA86652BBC29B3006BC789 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DADA86662BBC29C0006BC789 /* View+Style.swift */,
+				DADA86682BBC2B25006BC789 /* View+Pin.swift */,
+				DADA866D2BBC4CE8006BC789 /* SwitUIAdapter.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DADA86712BBC505B006BC789 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DADA86722BBC5069006BC789 /* PianoRollLogic.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E2EFC2405E74318607988A55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C9975A2C5E80D6A657E39D4 /* Pods_ArrangmentSynthiser.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA58090B2B5995DD00E49A0A /* ArrangmentSynthiser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5809202B5995E900E49A0A /* Build configuration list for PBXNativeTarget "ArrangmentSynthiser" */;
+			buildPhases = (
+				4AA1347630AC7384993C8010 /* [CP] Check Pods Manifest.lock */,
+				DA5809082B5995DD00E49A0A /* Sources */,
+				DA5809092B5995DD00E49A0A /* Frameworks */,
+				DA58090A2B5995DD00E49A0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArrangmentSynthiser;
+			packageProductDependencies = (
+				DADA865F2BBC0DDC006BC789 /* AudioKit */,
+				DADA86632BBC107C006BC789 /* DunneAudioKit */,
+				DADA866B2BBC4BA7006BC789 /* PianoRoll */,
+			);
+			productName = ArrangmentSynthiser;
+			productReference = DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA5809042B5995DD00E49A0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					DA58090B2B5995DD00E49A0A = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = DA5809072B5995DD00E49A0A /* Build configuration list for PBXProject "ArrangmentSynthiser" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DA5809032B5995DD00E49A0A;
+			packageReferences = (
+				DADA865E2BBC0DDC006BC789 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				DADA86622BBC107C006BC789 /* XCRemoteSwiftPackageReference "DunneAudioKit" */,
+				DADA866A2BBC4BA7006BC789 /* XCRemoteSwiftPackageReference "PianoRoll" */,
+			);
+			productRefGroup = DA58090D2B5995DD00E49A0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA58090B2B5995DD00E49A0A /* ArrangmentSynthiser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DA58090A2B5995DD00E49A0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA58091C2B5995E900E49A0A /* LaunchScreen.storyboard in Resources */,
+				DA5809192B5995E900E49A0A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4AA1347630AC7384993C8010 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArrangmentSynthiser-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA5809082B5995DD00E49A0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DADA86772BBD9715006BC789 /* PianoRollSettings.swift in Sources */,
+				DADA86732BBC5069006BC789 /* PianoRollLogic.swift in Sources */,
+				DADA86752BBD8DD4006BC789 /* EditorToolbarView.swift in Sources */,
+				DADA866E2BBC4CE8006BC789 /* SwitUIAdapter.swift in Sources */,
+				DADA86702BBC4F00006BC789 /* PianoRollView.swift in Sources */,
+				DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */,
+				DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */,
+				DADA86692BBC2B25006BC789 /* View+Pin.swift in Sources */,
+				DADA86672BBC29C0006BC789 /* View+Style.swift in Sources */,
+				DADA865B2BBC0905006BC789 /* EditorAudioInteractor.swift in Sources */,
+				DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DA58091A2B5995E900E49A0A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA58091B2B5995E900E49A0A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DA58091E2B5995E900E49A0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DA58091F2B5995E900E49A0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DA5809212B5995E900E49A0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BAB6C5D727B048765A5022C /* Pods-ArrangmentSynthiser.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArrangmentSynthiser/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.hse.ArrangmentSynthiser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA5809222B5995E900E49A0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArrangmentSynthiser/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.hse.ArrangmentSynthiser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA5809072B5995DD00E49A0A /* Build configuration list for PBXProject "ArrangmentSynthiser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA58091E2B5995E900E49A0A /* Debug */,
+				DA58091F2B5995E900E49A0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA5809202B5995E900E49A0A /* Build configuration list for PBXNativeTarget "ArrangmentSynthiser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5809212B5995E900E49A0A /* Debug */,
+				DA5809222B5995E900E49A0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DADA865E2BBC0DDC006BC789 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		DADA86622BBC107C006BC789 /* XCRemoteSwiftPackageReference "DunneAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/DunneAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		DADA866A2BBC4BA7006BC789 /* XCRemoteSwiftPackageReference "PianoRoll" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/PianoRoll.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DADA865F2BBC0DDC006BC789 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DADA865E2BBC0DDC006BC789 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		DADA86632BBC107C006BC789 /* DunneAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DADA86622BBC107C006BC789 /* XCRemoteSwiftPackageReference "DunneAudioKit" */;
+			productName = DunneAudioKit;
+		};
+		DADA866B2BBC4BA7006BC789 /* PianoRoll */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DADA866A2BBC4BA7006BC789 /* XCRemoteSwiftPackageReference "PianoRoll" */;
+			productName = PianoRoll;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DA5809042B5995DD00E49A0A /* Project object */;
+}

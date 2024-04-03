@@ -1,0 +1,6 @@
+framework module Pods_ArrangmentSynthiser {
+  umbrella header "Pods-ArrangmentSynthiser-umbrella.h"
+
+  export *
+  module * { export * }
+}
