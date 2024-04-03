@@ -39,6 +39,7 @@ class EditroAudioInteractor {
         sequencer.stop()
         sequencer.setLength(Duration(beats: Double(model.length) / 2))
         sequencer.tracks.first?.clear()
+        sequencer.enableLooping()
         for note in model.notes {
             print(note)
             sequencer.tracks.first?.add(noteNumber: MIDINoteNumber(note.pitch), velocity: 127, position: Duration(beats: Double(note.start / 2)), duration: Duration(beats: note.length / 2))

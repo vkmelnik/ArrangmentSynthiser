@@ -19,12 +19,22 @@ class EditorToolbarView: UIView {
         return button
     }()
 
-    lazy var selectButton: UIButton = {
+    lazy var settingsButton: UIButton = {
         let button = UIButton()
-        button.setTitle("✎", for: .normal)
+        button.setTitle("Настройки", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
         button.setHeight(40)
-        button.setWidth(50)
+        button.setWidth(100)
+
+        return button
+    }()
+
+    lazy var selectButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Подвинуть", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
+        button.setHeight(40)
+        button.setWidth(100)
 
         return button
     }()
@@ -37,8 +47,14 @@ class EditorToolbarView: UIView {
         playButton.layoutIfNeeded()
         playButton.makeRetroUI()
 
+        addSubview(settingsButton)
+        settingsButton.pinLeft(to: self, 20)
+        settingsButton.pinCenterY(to: self)
+        settingsButton.layoutIfNeeded()
+        settingsButton.makeRetroUI()
+
         addSubview(selectButton)
-        selectButton.pinLeft(to: self, 20)
+        selectButton.pinLeft(to: settingsButton.trailingAnchor, 20)
         selectButton.pinCenterY(to: self)
         selectButton.layoutIfNeeded()
         selectButton.makeRetroUI()

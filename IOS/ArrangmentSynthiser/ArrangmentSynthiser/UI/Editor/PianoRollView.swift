@@ -7,6 +7,8 @@
 
 import SwiftUI
 import PianoRoll
+import Keyboard
+import Tonic
 
 struct PianoRollView: View {
     let pianoRollDelegate: PianoRollDelegate?
@@ -63,10 +65,15 @@ struct PianoRollView: View {
             pianoRollDelegate?.onSelectionDone(notes)
         }
 
-        ScrollView([.horizontal, .vertical], showsIndicators: true) {
-            ZStack(alignment: .topLeading) {
-                PianoRoll(model: $model, noteColor: .cyan, gridColor: .black, layout: .horizontal).gesture(dragGesture)
-                Rectangle().fill(.blue).position(x: selectionX, y: selectionY).frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
+        ScrollView([.vertical], showsIndicators: true) {
+            HStack(alignment: .top) {
+                FalseKeyboard(pitchRange: Pitch(intValue: 0)...Pitch(intValue: model.height - 1), root: .C, scale: .chromatic).disabled(true).frame(width: 120)
+                ScrollView([.horizontal], showsIndicators: true) {
+                    ZStack(alignment: .topLeading) {
+                        PianoRoll(model: $model, noteColor: .cyan, gridColor: .black, layout: .horizontal).gesture(dragGesture)
+                        Rectangle().fill(.blue).position(x: selectionX, y: selectionY).frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
+                    }
+                }.scrollDisabled(!pianoRollSettings.scrollViewOn)
             }
         }.scrollDisabled(!pianoRollSettings.scrollViewOn).background(Color(white: 0.1)).onChange(of: model) { newValue in
             pianoRollDelegate?.onNotesChange(newValue)
