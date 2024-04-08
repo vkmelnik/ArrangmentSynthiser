@@ -7,47 +7,52 @@
 
 import AudioKit
 import DunneAudioKit
+import STKAudioKit
+import DevoloopAudioKit
 import Foundation
 import PianoRoll
 
 class EditroAudioInteractor {
     let engine = AudioEngine()
-    let instrument = Synth()
-    let sequencer = AppleSequencer()
-    let midiCallback = MIDICallbackInstrument()
+    let instruments: [InstrumentPlayer] = [
+        InstrumentPlayer(Synthiser()),
+        InstrumentPlayer(ElectricMandolin()),
+        InstrumentPlayer(Percussion())
+    ]
 
     init() {
-        midiCallback.callback = { status, note, velocity in
-            if status == 144 { //Note On
-                self.instrument.play(noteNumber: note, velocity: velocity, channel: 0)
-            } else if status == 128 { //Note Off
-                self.instrument.stop(noteNumber: note, channel: 0)
-            }
-        }
+        let mixer = Mixer(instruments.map({ instrument in
+            instrument.node
+        }))
 
-        engine.output = instrument
+        mixer.volume = 1
+
+        engine.output = mixer
         try? engine.start()
-        sequencer.newTrack("Track 1")
-        sequencer.setTempo(200)
-        sequencer.setLength(Duration(beats: 4))
-        sequencer.setGlobalMIDIOutput(midiCallback.midiIn)
-        sequencer.enableLooping()
-        sequencer.tracks.first?.add(noteNumber: MIDINoteNumber(40), velocity: 127, position: Duration(beats: 0.25 * Double(0)), duration: Duration(beats: 0.25))
     }
 
     func loadTrack(_ model: PianoRollModel) {
-        sequencer.stop()
-        sequencer.setLength(Duration(beats: Double(model.length) / 2))
-        sequencer.tracks.first?.clear()
-        sequencer.enableLooping()
-        for note in model.notes {
-            print(note)
-            sequencer.tracks.first?.add(noteNumber: MIDINoteNumber(note.pitch), velocity: 127, position: Duration(beats: Double(note.start / 2)), duration: Duration(beats: note.length / 2))
+        instruments.forEach { instrument in
+            instrument.sequencer.stop()
+            instrument.sequencer.setLength(Duration(beats: Double(model.length) / 4))
+            instrument.sequencer.tracks.first?.clear()
+            instrument.sequencer.enableLooping()
         }
-        sequencer.play()
+
+        for note in model.notes {
+            let instrument = instruments[InstrumentsCoding.getInstrument(note).rawValue]
+
+            instrument.sequencer.tracks.first?.add(noteNumber: MIDINoteNumber(note.pitch), velocity: 127, position: Duration(beats: Double(note.start / 4)), duration: Duration(beats: note.length / 4))
+        }
+
+        instruments.forEach { instrument in
+            instrument.sequencer.play()
+        }
     }
 
     func setTempo(_ tempo: Double) {
-        sequencer.setTempo(tempo)
+        instruments.forEach { instrument in
+            instrument.setTempo(tempo)
+        }
     }
 }

@@ -53,16 +53,23 @@ struct PianoRollView: View {
                 }
             }
 
+            let selectedNotes = notes.map({ note in
+                if let instrument = pianoRollSettings.currentInstrument {
+                    return PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, text: String(instrument), color: InstrumentsCoding.colors[instrument])
+                } else {
+                    return PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, text: note.text, color: InstrumentsCoding.getSelectedColor(note))
+                }
+            })
+
             model.notes = model.notes.filter({ note in
                 !notes.contains(note)
             }).map({ note in
-                PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, color: .cyan)
-            }) + notes.map({ note in
-                PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, color: .green)
-            })
+                PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, text: note.text, color: InstrumentsCoding.getColor(note))
+            }) + selectedNotes
 
             selectionOn = false
-            pianoRollDelegate?.onSelectionDone(notes)
+            pianoRollSettings.currentInstrument = nil
+            pianoRollDelegate?.onSelectionDone(selectedNotes)
         }
 
         ScrollView([.vertical], showsIndicators: true) {
@@ -70,8 +77,8 @@ struct PianoRollView: View {
                 FalseKeyboard(pitchRange: Pitch(intValue: 0)...Pitch(intValue: model.height - 1), root: .C, scale: .chromatic).disabled(true).frame(width: 120)
                 ScrollView([.horizontal], showsIndicators: true) {
                     ZStack(alignment: .topLeading) {
-                        PianoRoll(model: $model, noteColor: .cyan, gridColor: .black, layout: .horizontal).gesture(dragGesture)
-                        Rectangle().fill(.blue).position(x: selectionX, y: selectionY).frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
+                        PianoRoll(model: $model, noteColor: InstrumentsCoding.defaultColor, gridColor: .black, layout: .horizontal).gesture(dragGesture)
+                        Rectangle().fill(.gray).position(x: selectionX, y: selectionY).frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
                     }
                 }.scrollDisabled(!pianoRollSettings.scrollViewOn)
             }

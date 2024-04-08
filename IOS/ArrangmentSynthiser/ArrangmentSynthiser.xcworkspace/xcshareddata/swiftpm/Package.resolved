@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "devoloopaudiokit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AudioKit/DevoloopAudioKit.git",
+      "state" : {
+        "revision" : "3dfb80b2ee280c5edb19b2e4e340142521fcafdf",
+        "version" : "5.5.1"
+      }
+    },
+    {
       "identity" : "dunneaudiokit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AudioKit/DunneAudioKit.git",
@@ -52,6 +61,15 @@
       "state" : {
         "revision" : "49e5b619ffbd581431b5baa99054fa1a6982c404",
         "version" : "1.0.7"
+      }
+    },
+    {
+      "identity" : "stkaudiokit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AudioKit/STKAudioKit.git",
+      "state" : {
+        "revision" : "e6af9e24eb599d4ff34d5776b0801cf0068142bc",
+        "version" : "5.5.4"
       }
     },
     {

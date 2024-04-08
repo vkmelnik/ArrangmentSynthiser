@@ -17,7 +17,7 @@ class EditorViewController: UIViewController {
     var toolbar = EditorToolbarView()
     var pianoRoll: PianoRollView? = nil
 
-    var algorithmsView = AlgorithmsView()
+    var algorithmsView = AlgorithmsView(views: [AlgorithmView()], titles: ["Сгенерировать мелодию"])
     var algorithmsViewOffConstraint: NSLayoutConstraint?
     var algorithmsViewOnConstraint: NSLayoutConstraint?
 
@@ -38,7 +38,7 @@ class EditorViewController: UIViewController {
     private func configureAlgorithmsView() {
         view.addSubview(algorithmsView)
         algorithmsView.pinTop(to: toolbar.bottomAnchor)
-        algorithmsView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor)
+        algorithmsView.pinBottom(to: view)
         algorithmsViewOnConstraint = algorithmsView.pinRight(to: view)
         algorithmsViewOnConstraint?.isActive = false
         algorithmsViewOffConstraint = algorithmsView.pinLeft(to: view.trailingAnchor)
@@ -54,6 +54,10 @@ class EditorViewController: UIViewController {
         toolbar.selectButton.addTarget(self, action: #selector(onSelectButton), for: .touchUpInside)
         toolbar.settingsButton.addTarget(self, action: #selector(onSettingsButton), for: .touchUpInside)
         toolbar.algorithmsButton.addTarget(self, action: #selector(onAlgorithmsButton), for: .touchUpInside)
+
+        toolbar.synthButton.addTarget(self, action: #selector(onSynthButton), for: .touchUpInside)
+        toolbar.mandolinButton.addTarget(self, action: #selector(onMandolinButton), for: .touchUpInside)
+        toolbar.percussionButton.addTarget(self, action: #selector(onPercussionButton), for: .touchUpInside)
     }
 
     private func configurePianoRoll() {
@@ -62,7 +66,7 @@ class EditorViewController: UIViewController {
         view.addSubview(pianoRoll)
         pianoRoll.pinLeft(to: view)
         pianoRoll.pinRight(to: view)
-        pianoRoll.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor)
+        pianoRoll.pinBottom(to: view)
         pianoRoll.pinTop(to: toolbar.bottomAnchor, 16)
         pianoRoll.isUserInteractionEnabled = true
     }
@@ -92,7 +96,7 @@ class EditorViewController: UIViewController {
             let end = lastNote.start + lastNote.length
 
             audio.loadTrack(PianoRollModel(notes: selectionModel.notes.map({ note in
-                PianoRollNote(start: note.start - start, length: note.length, pitch: note.pitch)
+                PianoRollNote(start: note.start - start, length: note.length, pitch: note.pitch, text: note.text, color: note.color)
             }), length: Int(end - start + 1), height: selectionModel.height))
         } else {
             audio.loadTrack(model)
@@ -102,9 +106,28 @@ class EditorViewController: UIViewController {
     @objc
     private func onSelectButton() {
         if let scrollViewOn = pianoRoll?.pianoRollSettings.scrollViewOn {
+            pianoRoll?.pianoRollSettings.currentInstrument = 0
             pianoRoll?.pianoRollSettings.scrollViewOn = !scrollViewOn
             toolbar.selectButton.setTitle(scrollViewOn ? "Подвинуть" : "Выделить", for: .normal)
         }
+    }
+
+    @objc
+    private func onSynthButton() {
+        pianoRoll?.pianoRollSettings.currentInstrument = 0
+        pianoRoll?.pianoRollSettings.scrollViewOn = false
+    }
+
+    @objc
+    private func onMandolinButton() {
+        pianoRoll?.pianoRollSettings.currentInstrument = 1
+        pianoRoll?.pianoRollSettings.scrollViewOn = false
+    }
+
+    @objc
+    private func onPercussionButton() {
+        pianoRoll?.pianoRollSettings.currentInstrument = 2
+        pianoRoll?.pianoRollSettings.scrollViewOn = false
     }
 
     @objc
