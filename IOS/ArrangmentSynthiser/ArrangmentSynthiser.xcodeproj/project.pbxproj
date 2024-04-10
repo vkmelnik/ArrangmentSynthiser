@@ -40,6 +40,11 @@
 		DADA86A02BBF35AF006BC789 /* Percussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA869F2BBF35AF006BC789 /* Percussion.swift */; };
 		DADA86A32BBF3873006BC789 /* InstrumentsCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86A22BBF3873006BC789 /* InstrumentsCoding.swift */; };
 		DADA86A52BC43DC2006BC789 /* Color+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86A42BC43DC2006BC789 /* Color+RGB.swift */; };
+		DADA86A72BC6DD4C006BC789 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86A62BC6DD4C006BC789 /* Endpoint.swift */; };
+		DADA86A92BC6DDAB006BC789 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86A82BC6DDAB006BC789 /* Endpoints.swift */; };
+		DADA86AC2BC6E01C006BC789 /* Components+Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86AB2BC6E01C006BC789 /* Components+Encode.swift */; };
+		DADA86AE2BC6E05F006BC789 /* AlgorithmsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86AD2BC6E05F006BC789 /* AlgorithmsWorker.swift */; };
+		DADA86B02BC6E3AE006BC789 /* MelodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86AF2BC6E3AE006BC789 /* MelodyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +78,11 @@
 		DADA869F2BBF35AF006BC789 /* Percussion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percussion.swift; sourceTree = "<group>"; };
 		DADA86A22BBF3873006BC789 /* InstrumentsCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsCoding.swift; sourceTree = "<group>"; };
 		DADA86A42BC43DC2006BC789 /* Color+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+RGB.swift"; sourceTree = "<group>"; };
+		DADA86A62BC6DD4C006BC789 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		DADA86A82BC6DDAB006BC789 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		DADA86AB2BC6E01C006BC789 /* Components+Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Components+Encode.swift"; sourceTree = "<group>"; };
+		DADA86AD2BC6E05F006BC789 /* AlgorithmsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsWorker.swift; sourceTree = "<group>"; };
+		DADA86AF2BC6E3AE006BC789 /* MelodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyView.swift; sourceTree = "<group>"; };
 		ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.release.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +255,7 @@
 			children = (
 				DADA86872BBDD4BB006BC789 /* AlgorithmsView.swift */,
 				DADA86892BBEFB36006BC789 /* AlgorithmView.swift */,
+				DADA86AF2BC6E3AE006BC789 /* MelodyView.swift */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -252,7 +263,11 @@
 		DADA868D2BBF03B9006BC789 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				DADA86AA2BC6E011006BC789 /* Extensions */,
 				DADA868E2BBF0488006BC789 /* Networking.swift */,
+				DADA86A62BC6DD4C006BC789 /* Endpoint.swift */,
+				DADA86A82BC6DDAB006BC789 /* Endpoints.swift */,
+				DADA86AD2BC6E05F006BC789 /* AlgorithmsWorker.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -273,6 +288,14 @@
 				DADA86A22BBF3873006BC789 /* InstrumentsCoding.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DADA86AA2BC6E011006BC789 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DADA86AB2BC6E01C006BC789 /* Components+Encode.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E2EFC2405E74318607988A55 /* Frameworks */ = {
@@ -395,8 +418,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADA86AC2BC6E01C006BC789 /* Components+Encode.swift in Sources */,
 				DADA868A2BBEFB36006BC789 /* AlgorithmView.swift in Sources */,
 				DADA86882BBDD4BB006BC789 /* AlgorithmsView.swift in Sources */,
+				DADA86A92BC6DDAB006BC789 /* Endpoints.swift in Sources */,
 				DADA868F2BBF0488006BC789 /* Networking.swift in Sources */,
 				DADA869E2BBF32F3006BC789 /* Synthiser.swift in Sources */,
 				DADA86772BBD9715006BC789 /* PianoRollSettings.swift in Sources */,
@@ -407,6 +432,7 @@
 				DADA866E2BBC4CE8006BC789 /* SwitUIAdapter.swift in Sources */,
 				DADA86702BBC4F00006BC789 /* PianoRollView.swift in Sources */,
 				DADA86A02BBF35AF006BC789 /* Percussion.swift in Sources */,
+				DADA86B02BC6E3AE006BC789 /* MelodyView.swift in Sources */,
 				DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */,
 				DADA86992BBF2FD8006BC789 /* InstrumentLogic.swift in Sources */,
 				DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */,
@@ -418,7 +444,9 @@
 				DADA869C2BBF3135006BC789 /* ElectricMandolin.swift in Sources */,
 				DADA867A2BBDB15E006BC789 /* SettingsViewController.swift in Sources */,
 				DADA86A32BBF3873006BC789 /* InstrumentsCoding.swift in Sources */,
+				DADA86AE2BC6E05F006BC789 /* AlgorithmsWorker.swift in Sources */,
 				DADA86A52BC43DC2006BC789 /* Color+RGB.swift in Sources */,
+				DADA86A72BC6DD4C006BC789 /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

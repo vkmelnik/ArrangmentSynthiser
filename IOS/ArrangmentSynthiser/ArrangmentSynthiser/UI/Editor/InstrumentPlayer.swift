@@ -43,16 +43,6 @@ class InstrumentPlayer {
     }
 
     func getMidi() -> Data? {
-        let midiData = sequencer.genData()
-        let duration = sequencer.length
-        do {
-            let documentUrl = FileManager.default.temporaryDirectory
-            let recordUrl = documentUrl.appendingPathComponent("Test.mid")
-            try midiData?.write(to: recordUrl)
-        } catch {
-            print("Ошибка сохранения записи: \(error.localizedDescription)")
-        }
-
-        return midiData
+        sequencer.genData()
     }
 }

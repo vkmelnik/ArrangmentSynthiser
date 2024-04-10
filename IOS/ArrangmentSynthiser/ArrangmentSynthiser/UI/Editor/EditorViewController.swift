@@ -17,7 +17,8 @@ class EditorViewController: UIViewController {
     var toolbar = EditorToolbarView()
     var pianoRoll: PianoRollView? = nil
 
-    var algorithmsView = AlgorithmsView(views: [AlgorithmView()], titles: ["Сгенерировать мелодию"])
+    let melodyView = MelodyView()
+    lazy var algorithmsView = AlgorithmsView(views: [melodyView], titles: ["Сгенерировать мелодию"])
     var algorithmsViewOffConstraint: NSLayoutConstraint?
     var algorithmsViewOnConstraint: NSLayoutConstraint?
 
@@ -58,6 +59,8 @@ class EditorViewController: UIViewController {
         toolbar.synthButton.addTarget(self, action: #selector(onSynthButton), for: .touchUpInside)
         toolbar.mandolinButton.addTarget(self, action: #selector(onMandolinButton), for: .touchUpInside)
         toolbar.percussionButton.addTarget(self, action: #selector(onPercussionButton), for: .touchUpInside)
+
+        melodyView.generateButton.addTarget(self, action: #selector(onGenerateMelodyButton), for: .touchUpInside)
     }
 
     private func configurePianoRoll() {
@@ -78,29 +81,8 @@ class EditorViewController: UIViewController {
 
     @objc
     private func onPlayButton() {
-        if let selectionModel = selectionModel {
-            guard let start = selectionModel.notes.min(by: { note1, note2 in
-                note1.start < note2.start
-            })?.start else {
-                audio.loadTrack(model)
-                return
-            }
-
-            guard let lastNote: PianoRollNote = selectionModel.notes.max(by: { note1, note2 in
-                (note1.start + note1.length) < (note2.start + note2.length)
-            }) else {
-                audio.loadTrack(model)
-                return
-            }
-
-            let end = lastNote.start + lastNote.length
-
-            audio.loadTrack(PianoRollModel(notes: selectionModel.notes.map({ note in
-                PianoRollNote(start: note.start - start, length: note.length, pitch: note.pitch, text: note.text, color: note.color)
-            }), length: Int(end - start + 1), height: selectionModel.height))
-        } else {
-            audio.loadTrack(model)
-        }
+        loadTrack()
+        audio.play()
     }
 
     @objc
@@ -147,6 +129,40 @@ class EditorViewController: UIViewController {
         algorithmsViewOffConstraint?.isActive = isActive
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc
+    private func onGenerateMelodyButton(sender: UISlider, forEvent event: UIEvent) {
+        loadTrack()
+        audio.generateMelody { notes, error in
+            self.pianoRoll?.pianoRollSettings.addedNotes = notes
+        }
+    }
+
+    private func loadTrack() {
+        if let selectionModel = selectionModel {
+            guard let start = selectionModel.notes.min(by: { note1, note2 in
+                note1.start < note2.start
+            })?.start else {
+                audio.loadTrack(model)
+                return
+            }
+
+            guard let lastNote: PianoRollNote = selectionModel.notes.max(by: { note1, note2 in
+                (note1.start + note1.length) < (note2.start + note2.length)
+            }) else {
+                audio.loadTrack(model)
+                return
+            }
+
+            let end = lastNote.start + lastNote.length
+
+            audio.loadTrack(PianoRollModel(notes: selectionModel.notes.map({ note in
+                PianoRollNote(start: note.start - start, length: note.length, pitch: note.pitch, text: note.text, color: note.color)
+            }), length: Int(end - start + 1), height: selectionModel.height))
+        } else {
+            audio.loadTrack(model)
         }
     }
 }

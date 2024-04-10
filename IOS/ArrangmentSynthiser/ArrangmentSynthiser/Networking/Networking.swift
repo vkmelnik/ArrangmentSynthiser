@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias NetworkResult = Result<NetworkModel.Result, Error>
+
 class Networking {
     var baseURL: String
 
@@ -14,11 +16,66 @@ class Networking {
         self.baseURL = baseURL
     }
 
-    func applyAlgorithm(algorithm: String, midiURL: String, settings: [String: String], completion: (Data?, URLResponse, Error?)) {
-        let session = URLSession.shared
-        //let task = session.dataTask(with: <#T##URLRequest#>, completionHandler: completion)
+    func execute(_ request: Request, completion: @escaping (NetworkResult) -> Void) {
+        guard let request = convert(request) else {
+            return
+        }
 
+        var session = URLSession.shared
 
-        //task.resume()
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let error = error else {
+                completion(.success(NetworkModel.Result(data: data, response: response)))
+                return
+            }
+
+            completion(.failure(error))
+        }
+
+        task.resume()
+    }
+
+    public func convert(_ request: Request) -> URLRequest? {
+        guard let url = generateDestinationURL(request) else {
+            return nil
+        }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.allHTTPHeaderFields = request.endpoint.headers
+        urlRequest.httpMethod = request.method.rawValue
+        urlRequest.httpBody = request.body
+
+        return urlRequest
+    }
+
+    public func generateDestinationURL(_ request: Request) -> URL? {
+        guard
+            let url = URL(string: baseURL),
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        else {
+            return nil
+        }
+
+        let queryItems = request.parameters
+        components.path = request.endpoint.compositPath
+        if let queryItems = queryItems {
+            components.queryItems = convertParametersToQueryItems(queryItems)
+        }
+
+        components.encodeQueryParams()
+        guard let url = components.url else {
+            return nil
+        }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.method.rawValue
+        urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.httpBody = request.body
+
+        return components.url
+    }
+
+    func convertParametersToQueryItems(_ parameters: RequestParameters) -> [URLQueryItem] {
+        return parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
 }

@@ -25,7 +25,7 @@ struct PianoRollView: View {
         self.pianoRollDelegate = pianoRollDelegate
     }
 
-    public var body: some View {
+    var body: some View {
         let dragGesture = DragGesture(minimumDistance: 2).onChanged { value in
             let minX = min(value.startLocation.x, value.location.x)
             let maxX = max(value.startLocation.x, value.location.x)
@@ -86,8 +86,10 @@ struct PianoRollView: View {
             pianoRollDelegate?.onNotesChange(newValue)
         }.onChange(of: pianoRollSettings.length) { newValue in
             model = PianoRollModel(notes: model.notes.filter({ note in
-                Int(note.start) < pianoRollSettings.length
+                Int(note.start) < newValue
             }), length: pianoRollSettings.length, height: model.height)
+        }.onChange(of: pianoRollSettings.addedNotes) { newValue in
+            model = PianoRollModel(notes: model.notes + newValue, length: pianoRollSettings.length, height: model.height)
         }
     }
 }
