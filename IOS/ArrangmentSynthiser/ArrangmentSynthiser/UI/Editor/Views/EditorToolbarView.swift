@@ -81,45 +81,21 @@ class EditorToolbarView: UIView {
 
     init() {
         super.init(frame: .zero)
-
-        addSubview(settingsButton)
-        settingsButton.pinLeft(to: self, 20)
-        settingsButton.pinCenterY(to: self)
-        settingsButton.layoutIfNeeded()
-        settingsButton.makeRetroUI()
-
-        addSubview(selectButton)
-        selectButton.pinLeft(to: settingsButton.trailingAnchor, 20)
-        selectButton.pinCenterY(to: self)
-        selectButton.layoutIfNeeded()
-        selectButton.makeRetroUI()
-
-        addSubview(synthButton)
-        synthButton.pinLeft(to: selectButton.trailingAnchor, 20)
-        synthButton.pinCenterY(to: self)
-        synthButton.layoutIfNeeded()
-        synthButton.makeRetroUI()
-
-        addSubview(mandolinButton)
-        mandolinButton.pinLeft(to: synthButton.trailingAnchor, 20)
-        mandolinButton.pinCenterY(to: self)
-        mandolinButton.layoutIfNeeded()
-        mandolinButton.makeRetroUI()
-
-        addSubview(percussionButton)
-        percussionButton.pinLeft(to: mandolinButton.trailingAnchor, 20)
-        percussionButton.pinCenterY(to: self)
-        percussionButton.layoutIfNeeded()
-        percussionButton.makeRetroUI()
+        let stack = UIStackView(arrangedSubviews: [settingsButton, selectButton, synthButton, mandolinButton, percussionButton])
+        addSubview(stack)
+        stack.pinLeft(to: self, 10)
+        stack.pinCenterY(to: self)
+        stack.layoutIfNeeded()
+        stack.makeRetroPicker()
 
         addSubview(playButton)
-        playButton.pinLeft(to: percussionButton.trailingAnchor, 20)
+        playButton.pinLeft(to: stack.trailingAnchor, 20)
         playButton.pinCenterY(to: self)
         playButton.layoutIfNeeded()
         playButton.makeRetroUI()
 
         addSubview(algorithmsButton)
-        algorithmsButton.pinRight(to: self, 20)
+        algorithmsButton.pinRight(to: self, 10)
         algorithmsButton.pinCenterY(to: self)
         algorithmsButton.layoutIfNeeded()
         algorithmsButton.makeRetroUI()

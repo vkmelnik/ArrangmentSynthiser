@@ -45,6 +45,7 @@
 		DADA86AC2BC6E01C006BC789 /* Components+Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86AB2BC6E01C006BC789 /* Components+Encode.swift */; };
 		DADA86AE2BC6E05F006BC789 /* AlgorithmsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86AD2BC6E05F006BC789 /* AlgorithmsWorker.swift */; };
 		DADA86B02BC6E3AE006BC789 /* MelodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86AF2BC6E3AE006BC789 /* MelodyView.swift */; };
+		DADA86B52BC99A43006BC789 /* SelectedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86B42BC99A43006BC789 /* SelectedNoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		DADA86AB2BC6E01C006BC789 /* Components+Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Components+Encode.swift"; sourceTree = "<group>"; };
 		DADA86AD2BC6E05F006BC789 /* AlgorithmsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsWorker.swift; sourceTree = "<group>"; };
 		DADA86AF2BC6E3AE006BC789 /* MelodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyView.swift; sourceTree = "<group>"; };
+		DADA86B42BC99A43006BC789 /* SelectedNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNoteView.swift; sourceTree = "<group>"; };
 		ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.release.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,14 +187,13 @@
 		DADA86592BBC0826006BC789 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				DADA86B32BC99A2C006BC789 /* Views */,
 				DADA86A12BBF3865006BC789 /* Models */,
 				DADA869A2BBF3124006BC789 /* Instruments */,
 				DADA86812BBDBBE1006BC789 /* Keyboard */,
 				DADA86712BBC505B006BC789 /* Protocols */,
 				DA5809132B5995DD00E49A0A /* EditorViewController.swift */,
 				DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */,
-				DADA866F2BBC4F00006BC789 /* PianoRollView.swift */,
-				DADA86742BBD8DD4006BC789 /* EditorToolbarView.swift */,
 				DADA86962BBF2F37006BC789 /* InstrumentPlayer.swift */,
 			);
 			path = Editor;
@@ -296,6 +297,16 @@
 				DADA86AB2BC6E01C006BC789 /* Components+Encode.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DADA86B32BC99A2C006BC789 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DADA866F2BBC4F00006BC789 /* PianoRollView.swift */,
+				DADA86742BBD8DD4006BC789 /* EditorToolbarView.swift */,
+				DADA86B42BC99A43006BC789 /* SelectedNoteView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E2EFC2405E74318607988A55 /* Frameworks */ = {
@@ -439,6 +450,7 @@
 				DADA86692BBC2B25006BC789 /* View+Pin.swift in Sources */,
 				DADA86672BBC29C0006BC789 /* View+Style.swift in Sources */,
 				DADA865B2BBC0905006BC789 /* EditorAudioInteractor.swift in Sources */,
+				DADA86B52BC99A43006BC789 /* SelectedNoteView.swift in Sources */,
 				DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */,
 				DADA86972BBF2F37006BC789 /* InstrumentPlayer.swift in Sources */,
 				DADA869C2BBF3135006BC789 /* ElectricMandolin.swift in Sources */,

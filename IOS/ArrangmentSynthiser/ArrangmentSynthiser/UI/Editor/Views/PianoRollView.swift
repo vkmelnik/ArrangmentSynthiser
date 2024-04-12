@@ -13,6 +13,7 @@ import Tonic
 struct PianoRollView: View {
     let pianoRollDelegate: PianoRollDelegate?
     @State var model: PianoRollModel
+    @State var selectedModel: PianoRollModel
     @State var selectionX: CGFloat = 185
     @State var selectionY: CGFloat = 291
     @State var selectionWidth: CGFloat = 50
@@ -20,12 +21,31 @@ struct PianoRollView: View {
     @State var selectionOn: Bool = false
     @ObservedObject var pianoRollSettings = PianoRollSettings()
 
+    @GestureState var offset = CGSize.zero
+
     init(pianoRollDelegate: PianoRollDelegate?, length: Int, height: Int) {
         self.model = PianoRollModel(notes: [], length: length, height: height)
+        self.selectedModel = PianoRollModel(notes: [], length: length, height: height)
         self.pianoRollDelegate = pianoRollDelegate
     }
 
     var body: some View {
+        let pianoRoll = PianoRoll(model: $model, noteColor: InstrumentsCoding.defaultColor, gridColor: .black, layout: .horizontal)
+        let selectedPianoRoll = PianoRoll(model: $selectedModel, noteColor: InstrumentsCoding.defaultColor, gridColor: .clear, layout: .horizontal).disabled(true)
+
+        let selectionDragGesture = DragGesture(minimumDistance: 0.1)
+            .updating($offset) { value, state, _ in
+                state = value.translation
+            }
+            .onEnded { value in
+                model.notes = Array(model.notes.prefix(model.notes.count - selectedModel.notes.count))
+                            + selectedModel.notes.map { note in
+                    snap(note: note, offset: value.translation)
+                }
+
+                selectedModel.notes = []
+            }
+
         let dragGesture = DragGesture(minimumDistance: 2).onChanged { value in
             let minX = min(value.startLocation.x, value.location.x)
             let maxX = max(value.startLocation.x, value.location.x)
@@ -67,8 +87,11 @@ struct PianoRollView: View {
                 PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, text: note.text, color: InstrumentsCoding.getColor(note))
             }) + selectedNotes
 
+            selectedModel.notes = pianoRollSettings.currentInstrument == nil ? notes : []
+
             selectionOn = false
             pianoRollSettings.currentInstrument = nil
+            // pianoRollSettings.scrollViewOn = true
             pianoRollDelegate?.onSelectionDone(selectedNotes)
         }
 
@@ -77,7 +100,10 @@ struct PianoRollView: View {
                 FalseKeyboard(pitchRange: Pitch(intValue: 0)...Pitch(intValue: model.height - 1), root: .C, scale: .chromatic).disabled(true).frame(width: 120)
                 ScrollView([.horizontal], showsIndicators: true) {
                     ZStack(alignment: .topLeading) {
-                        PianoRoll(model: $model, noteColor: InstrumentsCoding.defaultColor, gridColor: .black, layout: .horizontal).gesture(dragGesture)
+                        pianoRoll.disabled(!pianoRollSettings.scrollViewOn).gesture(dragGesture)
+                        ZStack {
+                            selectedPianoRoll.opacity(selectedModel.notes.count != 0 ? 1.0 : 0.0).offset(offset)
+                        }.gesture(selectionDragGesture)
                         Rectangle().fill(.gray).position(x: selectionX, y: selectionY).frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
                     }
                 }.scrollDisabled(!pianoRollSettings.scrollViewOn)
@@ -90,6 +116,26 @@ struct PianoRollView: View {
             }), length: pianoRollSettings.length, height: model.height)
         }.onChange(of: pianoRollSettings.addedNotes) { newValue in
             model = PianoRollModel(notes: model.notes + newValue, length: pianoRollSettings.length, height: model.height)
+        }.onChange(of: pianoRollSettings.scrollViewOn) { newValue in
+            if newValue {
+                selectedModel.notes = []
+            }
         }
+    }
+
+    func snap(note: PianoRollNote, offset: CGSize, lengthOffset: CGFloat = 0.0) -> PianoRollNote {
+        var n = note
+        let gridSize = CGSize(width: 80, height: 40)
+        n.start += offset.width / gridSize.width
+        n.start = max(0, n.start)
+        n.start = min(Double(model.length - 1), n.start)
+        n.pitch -= Int(round(offset.height / CGFloat(gridSize.height)))
+        n.pitch = max(1, n.pitch)
+        n.pitch = min(model.height, n.pitch)
+        n.length += lengthOffset / gridSize.width
+        n.length = max(1, n.length)
+        n.length = min(Double(model.length), n.length)
+        n.length = min(Double(model.length) - n.start, n.length)
+        return n
     }
 }

@@ -88,7 +88,7 @@ class EditorViewController: UIViewController {
     @objc
     private func onSelectButton() {
         if let scrollViewOn = pianoRoll?.pianoRollSettings.scrollViewOn {
-            pianoRoll?.pianoRollSettings.currentInstrument = 0
+            pianoRoll?.pianoRollSettings.currentInstrument = nil
             pianoRoll?.pianoRollSettings.scrollViewOn = !scrollViewOn
             toolbar.selectButton.setTitle(scrollViewOn ? "Подвинуть" : "Выделить", for: .normal)
         }
