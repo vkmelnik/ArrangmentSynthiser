@@ -141,19 +141,11 @@
 				DADA86582BBC07D6006BC789 /* App */,
 				DA5809252B59960A00E49A0A /* Models */,
 				DA5809242B5995FE00E49A0A /* UI */,
-				DA5809232B5995F200E49A0A /* Network */,
 				DA5809182B5995E900E49A0A /* Assets.xcassets */,
 				DA58091A2B5995E900E49A0A /* LaunchScreen.storyboard */,
 				DA58091D2B5995E900E49A0A /* Info.plist */,
 			);
 			path = ArrangmentSynthiser;
-			sourceTree = "<group>";
-		};
-		DA5809232B5995F200E49A0A /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		DA5809242B5995FE00E49A0A /* UI */ = {
