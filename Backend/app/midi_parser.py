@@ -42,4 +42,19 @@ class MelodyParser:
                     s = getMusicProperties(x)
                     notes.append(getMusicProperties(x, x.getOffsetInHierarchy(None)))
 
-        return notes
+        return sorted(notes, key=lambda note: note.position)
+
+    def encode(notes):
+        encoded_notes = []
+        for note in notes:
+            encoded_note = music21.note.Note(note.pitch)
+            encoded_note.offset = note.position
+            encoded_note.duration.quarterLength = note.duration
+            encoded_notes.append(music21.note.Note(note.pitch))
+        stream1 = stream.Stream()
+        for i in range(0, len(encoded_notes)):
+            stream1.append(encoded_notes[i])
+            encoded_notes[i].offset = notes[i].position
+            encoded_notes[i].duration.quarterLength = notes[i].duration
+
+        return stream1.write('midi', fp='modded_midi.mid')

@@ -21,7 +21,7 @@ class Networking {
             return
         }
 
-        var session = URLSession.shared
+        let session = URLSession.shared
 
         let task = session.dataTask(with: request) { data, response, error in
             guard let error = error else {

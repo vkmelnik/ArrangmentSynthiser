@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import send_file
 from midi_parser import *
 
 app = Flask(__name__)
@@ -14,9 +15,9 @@ def get_melody():
     midi_data = request.data
 
     notes = MelodyParser.parse(midi_data)
-    print(notes)
 
-    return "jsonify([i.serialize for i in songs.all()])"
+    filename = MelodyParser.encode(notes)
+    return send_file(filename, mimetype='audio/midi')
 
 if __name__ == '__main__':
     app.run()
