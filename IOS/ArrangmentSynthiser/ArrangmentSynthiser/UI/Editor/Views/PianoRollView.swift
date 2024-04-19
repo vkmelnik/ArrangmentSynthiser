@@ -115,7 +115,23 @@ struct PianoRollView: View {
                 Int(note.start) < newValue
             }), length: pianoRollSettings.length, height: model.height)
         }.onChange(of: pianoRollSettings.addedNotes) { newValue in
-            model = PianoRollModel(notes: model.notes + newValue, length: pianoRollSettings.length, height: model.height)
+            if pianoRollSettings.scrollViewOn {
+                model = PianoRollModel(notes: newValue, length: pianoRollSettings.length, height: model.height)
+            } else {
+                let filteredNotes = model.notes.filter({ note in
+                    !selectedModel.notes.contains(where: { note2 in
+                        note.pitch == note2.pitch && note.length == note2.length && note.text == note2.text && note.start == note2.start
+                    })
+                })
+                let minPosition = selectedModel.notes.map { note in note.start }.min() ?? 0
+                selectedModel.notes = []
+                let correctedNotes: [PianoRollNote] = newValue.map { note in
+                    PianoRollNote(start: note.start + minPosition, length: note.length, pitch: note.pitch, text: note.text, color: note.color)
+                }
+
+                pianoRollDelegate?.onSelectionDone([])
+                model = PianoRollModel(notes: filteredNotes + correctedNotes, length: pianoRollSettings.length, height: model.height)
+            }
         }.onChange(of: pianoRollSettings.scrollViewOn) { newValue in
             if newValue {
                 selectedModel.notes = []

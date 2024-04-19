@@ -30,17 +30,16 @@ class MelodyParser:
                 song[i] = s2
             i += 1
 
-        def getMusicProperties(x, position):
-            return MelodyNote(x.pitch, x.duration.quarterLength, position, x.volume.velocity)
+        def getMusicProperties(x, position, duration_multiplier):
+            return MelodyNote(x.pitch, x.duration.quarterLength * duration_multiplier, position, x.volume.velocity)
 
         notes = []
         for a in song.recurse().notes:
             if (a.isNote):
-                notes.append(getMusicProperties(a, a.getOffsetInHierarchy(song)))
+                notes.append(getMusicProperties(a, a.getOffsetInHierarchy(song), 1))
             if (a.isChord):
                 for x in a._notes:
-                    s = getMusicProperties(x)
-                    notes.append(getMusicProperties(x, x.getOffsetInHierarchy(None)))
+                    notes.append(getMusicProperties(x, a.getOffsetInHierarchy(song), a.duration.quarterLength))
 
         return sorted(notes, key=lambda note: note.position)
 
