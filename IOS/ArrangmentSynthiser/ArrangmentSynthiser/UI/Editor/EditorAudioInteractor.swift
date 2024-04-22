@@ -65,15 +65,16 @@ class EditroAudioInteractor {
         }
     }
 
-    func generateMelody(completion: @escaping ([PianoRollNote], Error?) -> Void) {
+    func generateMelody(scale: MelodyScaleWithTonic, completion: @escaping ([PianoRollNote], Error?) -> Void) {
         guard let midi = instruments[3].getMidi() else {
             completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
             return
         }
 
-        let endpoint = AlgorithmEndpoints.melody.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: [])
+        let parameters: RequestParameters = scale.scale == .auto ? [] : [(key: "scale", value: scale.scale.rawValue), (key: "tonic", value: scale.tonic)]
+        let endpoint = AlgorithmEndpoints.melody.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: parameters)
 
-        algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
+        algorithmsWorker.applyAlgorithm(midi: midi, scale: scale, endpoint: endpoint) { data, error in
             if let error = error {
                 completion([], error)
             } else if let data = data {

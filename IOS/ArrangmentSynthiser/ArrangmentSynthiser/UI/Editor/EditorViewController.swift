@@ -18,6 +18,8 @@ class EditorViewController: UIViewController {
     var pianoRoll: PianoRollView? = nil
 
     let melodyView = MelodyView()
+    var scale: MelodyScaleWithTonic = MelodyScaleWithTonic(scale: .auto, tonic: "C")
+
     lazy var algorithmsView = AlgorithmsView(views: [melodyView], titles: ["Сгенерировать мелодию"])
     var algorithmsViewOffConstraint: NSLayoutConstraint?
     var algorithmsViewOnConstraint: NSLayoutConstraint?
@@ -61,6 +63,12 @@ class EditorViewController: UIViewController {
         toolbar.percussionButton.addTarget(self, action: #selector(onPercussionButton), for: .touchUpInside)
 
         melodyView.generateButton.addTarget(self, action: #selector(onGenerateMelodyButton), for: .touchUpInside)
+        melodyView.onScaleChange = { scale in
+            self.scale = MelodyScaleWithTonic(scale: scale, tonic: self.scale.tonic)
+        }
+        melodyView.onTonicChange = { tonic in
+            self.scale = MelodyScaleWithTonic(scale: self.scale.scale, tonic: tonic)
+        }
     }
 
     private func configurePianoRoll() {
@@ -135,7 +143,7 @@ class EditorViewController: UIViewController {
     @objc
     private func onGenerateMelodyButton(sender: UISlider, forEvent event: UIEvent) {
         loadTrack()
-        audio.generateMelody { notes, error in
+        audio.generateMelody(scale: self.scale) { notes, error in
             self.pianoRoll?.pianoRollSettings.addedNotes = notes
         }
     }
