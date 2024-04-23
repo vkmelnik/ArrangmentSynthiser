@@ -10,7 +10,7 @@ class Chord:
         self.notes = notes
 
     def randomChord(scale):
-        chordNotes = [random.choice(scale.pitches)]
+        chordNotes = [random.choice(scale.pitches[0:5])]
         chordNotes.append(scale.nextPitch(scale.nextPitch(chordNotes[0])))
         if random.choice([0, 1]) == 0:
             chordNotes.append(scale.nextPitch(scale.nextPitch(chordNotes[1])))
