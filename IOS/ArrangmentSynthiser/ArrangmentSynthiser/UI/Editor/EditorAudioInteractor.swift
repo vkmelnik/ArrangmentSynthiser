@@ -74,26 +74,58 @@ class EditroAudioInteractor {
         let parameters: RequestParameters = scale.scale == .auto ? [] : [(key: "scale", value: scale.scale.rawValue), (key: "tonic", value: scale.tonic)]
         let endpoint = AlgorithmEndpoints.melody.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: parameters)
 
-        algorithmsWorker.applyAlgorithm(midi: midi, scale: scale, endpoint: endpoint) { data, error in
-            if let error = error {
-                completion([], error)
-            } else if let data = data {
-                let sequencer = AppleSequencer()
-                sequencer.loadMIDIFile(fromData: data)
-                guard sequencer.tracks.count > 0 else {
-                    completion([], nil)
-                    return
-                }
-
-                let notes = sequencer.tracks[0].getMIDINoteData()
-
-                completion(notes.map({ noteData in
-                    PianoRollNote(start: noteData.position.beats * 4, length: noteData.duration.beats * 4, pitch: Int(noteData.noteNumber))
-                }), nil)
-
-            } else {
-                completion([], nil)
-            }
+        algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
+            self.loadServerAnswer(data: data, error: error, completion: completion)
         }
     }
+
+    func generateChords(scale: MelodyScaleWithTonic, completion: @escaping ([PianoRollNote], Error?) -> Void) {
+        guard let midi = instruments[3].getMidi() else {
+            completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
+            return
+        }
+
+        let parameters: RequestParameters = scale.scale == .auto ? [] : [(key: "scale", value: scale.scale.rawValue), (key: "tonic", value: scale.tonic)]
+        let endpoint = AlgorithmEndpoints.chords.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: parameters)
+
+        algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
+            self.loadServerAnswer(data: data, error: error, completion: completion)
+        }
+    }
+
+    func generateRhythm(completion: @escaping ([PianoRollNote], Error?) -> Void) {
+        guard let midi = instruments[3].getMidi() else {
+            completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
+            return
+        }
+
+        let endpoint = AlgorithmEndpoints.rhythm.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: [])
+
+        algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
+            self.loadServerAnswer(data: data, error: error, completion: completion)
+        }
+    }
+
+    func loadServerAnswer(data: Data?, error: Error?, completion: @escaping ([PianoRollNote], Error?) -> Void) {
+        if let error = error {
+            completion([], error)
+        } else if let data = data {
+            let sequencer = AppleSequencer()
+            sequencer.loadMIDIFile(fromData: data)
+            guard sequencer.tracks.count > 0 else {
+                completion([], nil)
+                return
+            }
+
+            let notes = sequencer.tracks[0].getMIDINoteData()
+
+            completion(notes.map({ noteData in
+                PianoRollNote(start: noteData.position.beats * 4, length: noteData.duration.beats * 4, pitch: Int(noteData.noteNumber))
+            }), nil)
+
+        } else {
+            completion([], nil)
+        }
+    }
+        
 }

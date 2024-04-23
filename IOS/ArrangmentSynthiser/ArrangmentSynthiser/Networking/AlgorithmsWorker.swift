@@ -14,7 +14,7 @@ class AlgorithmsWorker {
         self.networking = networking
     }
 
-    func applyAlgorithm(midi: Data, scale: MelodyScaleWithTonic, endpoint: AlgorithmEndpoint, completion: @escaping (Data?, Error?) -> Void) {
+    func applyAlgorithm(midi: Data, endpoint: AlgorithmEndpoint, completion: @escaping (Data?, Error?) -> Void) {
         let request = Request(endpoint: endpoint, method: .post, body: midi)
 
         networking.execute(request) { result in

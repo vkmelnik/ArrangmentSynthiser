@@ -18,9 +18,11 @@ class EditorViewController: UIViewController {
     var pianoRoll: PianoRollView? = nil
 
     let melodyView = MelodyView()
+    let rhythmView = RhythmView()
+    let chordsView = ChordsView()
     var scale: MelodyScaleWithTonic = MelodyScaleWithTonic(scale: .auto, tonic: "C")
 
-    lazy var algorithmsView = AlgorithmsView(views: [melodyView], titles: ["Сгенерировать мелодию"])
+    lazy var algorithmsView = AlgorithmsView(views: [melodyView, rhythmView, chordsView], titles: ["Сгенерировать мелодию", "Сгенерировать ритм", "Сгенерировать аккорды"])
     var algorithmsViewOffConstraint: NSLayoutConstraint?
     var algorithmsViewOnConstraint: NSLayoutConstraint?
 
@@ -69,6 +71,16 @@ class EditorViewController: UIViewController {
         melodyView.onTonicChange = { tonic in
             self.scale = MelodyScaleWithTonic(scale: self.scale.scale, tonic: tonic)
         }
+
+        chordsView.generateButton.addTarget(self, action: #selector(onGenerateChordsButton), for: .touchUpInside)
+        chordsView.onScaleChange = { scale in
+            self.scale = MelodyScaleWithTonic(scale: scale, tonic: self.scale.tonic)
+        }
+        chordsView.onTonicChange = { tonic in
+            self.scale = MelodyScaleWithTonic(scale: self.scale.scale, tonic: tonic)
+        }
+
+        rhythmView.generateButton.addTarget(self, action: #selector(onGenerateRhythmButton), for: .touchUpInside)
     }
 
     private func configurePianoRoll() {
@@ -144,6 +156,22 @@ class EditorViewController: UIViewController {
     private func onGenerateMelodyButton(sender: UISlider, forEvent event: UIEvent) {
         loadTrack()
         audio.generateMelody(scale: self.scale) { notes, error in
+            self.pianoRoll?.pianoRollSettings.addedNotes = notes
+        }
+    }
+
+    @objc
+    private func onGenerateRhythmButton(sender: UISlider, forEvent event: UIEvent) {
+        loadTrack()
+        audio.generateRhythm { notes, error in
+            self.pianoRoll?.pianoRollSettings.addedNotes = notes
+        }
+    }
+
+    @objc
+    private func onGenerateChordsButton(sender: UISlider, forEvent event: UIEvent) {
+        loadTrack()
+        audio.generateChords(scale: self.scale) { notes, error in
             self.pianoRoll?.pianoRollSettings.addedNotes = notes
         }
     }

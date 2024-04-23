@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A76D9DEEA964C1E55EA26C67 /* Pods_ArrangmentSynthiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9975A2C5E80D6A657E39D4 /* Pods_ArrangmentSynthiser.framework */; };
+		DA2042E42BD729D000E04D5E /* RhythmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E32BD729D000E04D5E /* RhythmView.swift */; };
+		DA2042E62BD736D600E04D5E /* ChordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E52BD736D600E04D5E /* ChordsView.swift */; };
 		DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58090F2B5995DD00E49A0A /* AppDelegate.swift */; };
 		DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809112B5995DD00E49A0A /* SceneDelegate.swift */; };
 		DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809132B5995DD00E49A0A /* EditorViewController.swift */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		1BAB6C5D727B048765A5022C /* Pods-ArrangmentSynthiser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.debug.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.debug.xcconfig"; sourceTree = "<group>"; };
 		9C9975A2C5E80D6A657E39D4 /* Pods_ArrangmentSynthiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArrangmentSynthiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA2042E32BD729D000E04D5E /* RhythmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmView.swift; sourceTree = "<group>"; };
+		DA2042E52BD736D600E04D5E /* ChordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsView.swift; sourceTree = "<group>"; };
 		DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrangmentSynthiser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58090F2B5995DD00E49A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA5809112B5995DD00E49A0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 				DADA86872BBDD4BB006BC789 /* AlgorithmsView.swift */,
 				DADA86892BBEFB36006BC789 /* AlgorithmView.swift */,
 				DADA86AF2BC6E3AE006BC789 /* MelodyView.swift */,
+				DA2042E32BD729D000E04D5E /* RhythmView.swift */,
+				DA2042E52BD736D600E04D5E /* ChordsView.swift */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -430,9 +436,11 @@
 				DADA86772BBD9715006BC789 /* PianoRollSettings.swift in Sources */,
 				DADA867D2BBDB1A9006BC789 /* SliderView.swift in Sources */,
 				DADA86832BBDBBF5006BC789 /* FalseKeyboard.swift in Sources */,
+				DA2042E62BD736D600E04D5E /* ChordsView.swift in Sources */,
 				DADA86732BBC5069006BC789 /* PianoRollLogic.swift in Sources */,
 				DADA86752BBD8DD4006BC789 /* EditorToolbarView.swift in Sources */,
 				DADA866E2BBC4CE8006BC789 /* SwitUIAdapter.swift in Sources */,
+				DA2042E42BD729D000E04D5E /* RhythmView.swift in Sources */,
 				DADA86702BBC4F00006BC789 /* PianoRollView.swift in Sources */,
 				DADA86A02BBF35AF006BC789 /* Percussion.swift in Sources */,
 				DADA86B02BC6E3AE006BC789 /* MelodyView.swift in Sources */,
