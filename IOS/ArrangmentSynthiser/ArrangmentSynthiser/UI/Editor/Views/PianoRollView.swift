@@ -21,6 +21,10 @@ struct PianoRollView: View {
     @State var selectionOn: Bool = false
     @ObservedObject var pianoRollSettings = PianoRollSettings()
 
+    @State private var animationWorkItem: DispatchWorkItem?
+    @State private var playbackProgress: CGFloat = 0
+    @State private var animationRestartTimer: Timer?
+
     @GestureState var offset = CGSize.zero
 
     init(pianoRollDelegate: PianoRollDelegate?, length: Int, height: Int) {
@@ -91,20 +95,30 @@ struct PianoRollView: View {
 
             selectionOn = false
             pianoRollSettings.currentInstrument = nil
-            // pianoRollSettings.scrollViewOn = true
             pianoRollDelegate?.onSelectionDone(selectedNotes)
         }
 
+        // MARK: - Вёрстка
         ScrollView([.vertical], showsIndicators: true) {
             HStack(alignment: .top) {
+                // Клавиатура слева.
                 FalseKeyboard(pitchRange: Pitch(intValue: 0)...Pitch(intValue: model.height - 1), root: .C, scale: .chromatic).disabled(true).frame(width: 120)
                 ScrollView([.horizontal], showsIndicators: true) {
                     ZStack(alignment: .topLeading) {
+                        // PianoRoll.
                         pianoRoll.disabled(!pianoRollSettings.scrollViewOn).gesture(dragGesture)
                         ZStack {
+                            // Выделенные ноты.
                             selectedPianoRoll.opacity(selectedModel.notes.count != 0 ? 1.0 : 0.0).offset(offset)
                         }.gesture(selectionDragGesture)
-                        Rectangle().fill(.gray).position(x: selectionX, y: selectionY).frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
+                        // Выделение.
+                        Rectangle().fill(.gray).position(x: selectionX, y: selectionY)
+                            .frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
+                        // Прогресс воспроизведения.
+                        Rectangle().fill(.orange).frame(width: 2).offset(x: playbackProgress)
+                            .onChange(of: pianoRollSettings.tempo) { newValue in
+                                changeAnimation()
+                            }
                     }
                 }.scrollDisabled(!pianoRollSettings.scrollViewOn)
             }
@@ -139,7 +153,7 @@ struct PianoRollView: View {
         }.edgesIgnoringSafeArea([.leading, .trailing])
     }
 
-    func snap(note: PianoRollNote, offset: CGSize, lengthOffset: CGFloat = 0.0) -> PianoRollNote {
+    private func snap(note: PianoRollNote, offset: CGSize, lengthOffset: CGFloat = 0.0) -> PianoRollNote {
         var n = note
         let gridSize = CGSize(width: 80, height: 40)
         n.start += offset.width / gridSize.width
@@ -153,5 +167,32 @@ struct PianoRollView: View {
         n.length = min(Double(model.length), n.length)
         n.length = min(Double(model.length) - n.start, n.length)
         return n
+    }
+
+    private func changeAnimation() {
+        animationWorkItem?.cancel()
+        animationRestartTimer?.invalidate()
+        if pianoRollSettings.tempo > 5 {
+            let width = CGFloat(model.length) * 80
+            let left = (width - playbackProgress) / width * 4 * 60
+            let fullAnimation = DispatchWorkItem {
+                withAnimation(.linear(duration: 4 * 60 / Double(pianoRollSettings.tempo))) {
+                    playbackProgress = CGFloat(model.length) * 80
+                }
+            }
+
+            animationWorkItem = DispatchWorkItem {
+                withAnimation(.linear(duration: left / Double(pianoRollSettings.tempo))) {
+                    playbackProgress = CGFloat(model.length) * 80
+                }
+            }
+
+            animationRestartTimer = Timer.scheduledTimer(withTimeInterval: 4 * 60 / Double(pianoRollSettings.tempo), repeats: true) { timer in
+                playbackProgress = 0
+                fullAnimation.perform()
+            }
+
+            animationWorkItem?.perform()
+        }
     }
 }

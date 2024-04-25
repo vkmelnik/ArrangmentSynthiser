@@ -104,11 +104,15 @@ class EditorViewController: UIViewController {
     private func onPlayButton() {
         loadTrack()
         audio.play()
+        if selectionModel == nil {
+            pianoRoll?.pianoRollSettings.tempo = settingsViewController.tempoSlider.slider.value
+        }
     }
 
     @objc
     private func onStopButton() {
         audio.stop()
+        pianoRoll?.pianoRollSettings.tempo = 1
     }
 
     @objc
@@ -141,6 +145,9 @@ class EditorViewController: UIViewController {
     @objc
     private func onTempoChange(sender: UISlider, forEvent event: UIEvent) {
         audio.setTempo(Double(Int(sender.value)))
+        if pianoRoll?.pianoRollSettings.tempo ?? 0 > 2 {
+            pianoRoll?.pianoRollSettings.tempo = sender.value
+        }
     }
 
     @objc
