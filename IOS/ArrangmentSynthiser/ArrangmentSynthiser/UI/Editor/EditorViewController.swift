@@ -13,9 +13,10 @@ class EditorViewController: UIViewController {
     let settingsViewController = SettingsViewController()
     let audio = EditroAudioInteractor()
     var model: PianoRollModel = PianoRollModel(notes: [], length: 1, height: 1)
-    var selectionModel: PianoRollModel? = nil
+    var selectionModel: PianoRollModel?
     var toolbar = EditorToolbarView()
-    var pianoRoll: PianoRollView? = nil
+    var pianoRoll: PianoRollView?
+    var pianoRollUIKitView: UIView?
 
     let melodyView = MelodyView()
     let rhythmView = RhythmView()
@@ -28,15 +29,15 @@ class EditorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = SynthColors.backgroundPrimary
+        view.backgroundColor = SynthStyle.backgroundPrimary
         configureUI()
     }
 
     private func configureUI() {
         settingsViewController.tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
         settingsViewController.lengthSlider.slider.addTarget(self, action: #selector(onLengthChange), for: .valueChanged)
-        configureToolbar()
         configurePianoRoll()
+        configureToolbar()
         configureAlgorithmsView()
     }
 
@@ -53,7 +54,11 @@ class EditorViewController: UIViewController {
         view.addSubview(toolbar)
         toolbar.pinHorizontal(to: view)
         toolbar.pinTop(to: view.safeAreaLayoutGuide.topAnchor)
+        pianoRollUIKitView?.pinTop(to: toolbar.bottomAnchor, 16)
         toolbar.setHeight(70)
+        view.addSubview(toolbar.instrumentsStack)
+        toolbar.instrumentsStack.pinTop(to: toolbar.instrumentsButton.bottomAnchor, 8)
+        toolbar.instrumentsStack.pinCenterX(to: toolbar.instrumentsButton)
 
         toolbar.playButton.addTarget(self, action: #selector(onPlayButton), for: .touchUpInside)
         toolbar.stopButton.addTarget(self, action: #selector(onStopButton), for: .touchUpInside)
@@ -91,8 +96,8 @@ class EditorViewController: UIViewController {
         pianoRoll.pinLeft(to: view)
         pianoRoll.pinRight(to: view)
         pianoRoll.pinBottom(to: view)
-        pianoRoll.pinTop(to: toolbar.bottomAnchor, 16)
         pianoRoll.isUserInteractionEnabled = true
+        pianoRollUIKitView = pianoRoll
     }
 
     @objc

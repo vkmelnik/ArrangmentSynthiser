@@ -23,7 +23,7 @@ class AlgorithmView: UIView {
 
     init() {
         super.init(frame: .zero)
-        backgroundColor = SynthColors.backgroundSecondary
+        backgroundColor = SynthStyle.backgroundSecondary
 
         addSubview(scrollView)
         scrollView.pinHorizontal(to: self)

@@ -43,7 +43,7 @@ extension UIView {
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.cornerRadius = 8
+        gradient.cornerRadius = SynthStyle.cornerRadius
         return gradient
     }
 
@@ -68,7 +68,7 @@ extension UIView {
         gradient.locations = [0.0, 0.20, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.cornerRadius = 8
+        gradient.cornerRadius = SynthStyle.cornerRadius
         gradient.masksToBounds = true
         gradient.addSublayer(getReflection(reflection))
         return gradient
@@ -110,7 +110,7 @@ extension UIView {
     // Make PickerView or DatePickerView to look like in older IOS versions.
     func makeRetroPicker() -> CALayer {
         let retroLayer = CALayer()
-        layer.cornerRadius = 8
+        layer.cornerRadius = SynthStyle.cornerRadius
         layer.masksToBounds = true
         layer.borderWidth = 6
         layer.borderColor = UIColor.black.cgColor
@@ -152,7 +152,7 @@ class RetroStack: UIStackView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = self.bounds
-        layer.cornerRadius = 8
+        layer.cornerRadius = SynthStyle.cornerRadius
         layer.masksToBounds = true
     }
 
@@ -163,7 +163,7 @@ class RetroStack: UIStackView {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 1
         layer.addSublayer(gradient)
-        layer.cornerRadius = 8
+        layer.cornerRadius = SynthStyle.cornerRadius
 
         return gradient
     }
@@ -185,7 +185,7 @@ class RetroUIButton: UIButton {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 1
         layer.addSublayer(gradient)
-        layer.cornerRadius = 8
+        layer.cornerRadius = SynthStyle.cornerRadius
 
         return gradient
     }

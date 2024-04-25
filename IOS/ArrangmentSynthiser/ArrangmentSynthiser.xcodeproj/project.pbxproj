@@ -11,7 +11,7 @@
 		DA2042E42BD729D000E04D5E /* RhythmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E32BD729D000E04D5E /* RhythmView.swift */; };
 		DA2042E62BD736D600E04D5E /* ChordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E52BD736D600E04D5E /* ChordsView.swift */; };
 		DA2042E82BDA8BC900E04D5E /* NamedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E72BDA8BC900E04D5E /* NamedPickerView.swift */; };
-		DA2042EA2BDA9A6700E04D5E /* SynthColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E92BDA9A6700E04D5E /* SynthColors.swift */; };
+		DA2042EA2BDA9A6700E04D5E /* SynthStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2042E92BDA9A6700E04D5E /* SynthStyle.swift */; };
 		DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58090F2B5995DD00E49A0A /* AppDelegate.swift */; };
 		DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809112B5995DD00E49A0A /* SceneDelegate.swift */; };
 		DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809132B5995DD00E49A0A /* EditorViewController.swift */; };
@@ -58,7 +58,7 @@
 		DA2042E32BD729D000E04D5E /* RhythmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmView.swift; sourceTree = "<group>"; };
 		DA2042E52BD736D600E04D5E /* ChordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsView.swift; sourceTree = "<group>"; };
 		DA2042E72BDA8BC900E04D5E /* NamedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedPickerView.swift; sourceTree = "<group>"; };
-		DA2042E92BDA9A6700E04D5E /* SynthColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthColors.swift; sourceTree = "<group>"; };
+		DA2042E92BDA9A6700E04D5E /* SynthStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthStyle.swift; sourceTree = "<group>"; };
 		DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrangmentSynthiser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58090F2B5995DD00E49A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA5809112B5995DD00E49A0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 			children = (
 				DADA867C2BBDB1A9006BC789 /* SliderView.swift */,
 				DA2042E72BDA8BC900E04D5E /* NamedPickerView.swift */,
-				DA2042E92BDA9A6700E04D5E /* SynthColors.swift */,
+				DA2042E92BDA9A6700E04D5E /* SynthStyle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA2042EA2BDA9A6700E04D5E /* SynthColors.swift in Sources */,
+				DA2042EA2BDA9A6700E04D5E /* SynthStyle.swift in Sources */,
 				DADA86AC2BC6E01C006BC789 /* Components+Encode.swift in Sources */,
 				DADA868A2BBEFB36006BC789 /* AlgorithmView.swift in Sources */,
 				DADA86882BBDD4BB006BC789 /* AlgorithmsView.swift in Sources */,

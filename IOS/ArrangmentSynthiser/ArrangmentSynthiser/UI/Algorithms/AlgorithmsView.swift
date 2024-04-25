@@ -21,7 +21,7 @@ class AlgorithmsView: UIView {
     init(views: [UIView], titles: [String]) {
         self.views = views
         super.init(frame: .zero)
-        backgroundColor = SynthColors.backgroundSecondary
+        backgroundColor = SynthStyle.backgroundSecondary
         let stack = UIStackView()
         stack.axis = .vertical
         addSubview(stack)
