@@ -11,7 +11,7 @@ class AlgorithmsView: UIView {
     var views: [UIView]
 
     let makeButton = {
-        let button = UIButton()
+        let button = RetroUIButton.makeButton()
         button.setHeight(40)
         button.setWidth(mode: .grOE, 200)
 
@@ -21,7 +21,7 @@ class AlgorithmsView: UIView {
     init(views: [UIView], titles: [String]) {
         self.views = views
         super.init(frame: .zero)
-        backgroundColor = UIColor(white: 0.15, alpha: 1)
+        backgroundColor = SynthColors.backgroundSecondary
         let stack = UIStackView()
         stack.axis = .vertical
         addSubview(stack)
@@ -47,6 +47,6 @@ class AlgorithmsView: UIView {
         let view = views[sender.tag]
         addSubview(view)
         view.pin(to: self)
-        UIView.animate(withDuration: 0.1, animations: layoutIfNeeded)
+        layoutIfNeeded()
     }
 }

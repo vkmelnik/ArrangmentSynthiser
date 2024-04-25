@@ -35,16 +35,15 @@ extension UIView {
         return gradient
     }
 
-    func getReflection() -> CAGradientLayer {
+    func getReflection(_ colors: [UIColor] = [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0.138755498), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3890394677)]) -> CAGradientLayer {
         let gradient = CAGradientLayer()
-        let colors = [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0.138755498), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3890394677)]
-        let offset = CGFloat(5)
+        let offset = CGFloat(3)
         gradient.frame = CGRect(x: bounds.origin.x + offset, y: bounds.origin.y + bounds.height / 2, width: bounds.width - offset, height: bounds.height / 2)
         gradient.colors = [colors[0].cgColor, colors[1].cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.cornerRadius = self.bounds.height / 5
+        gradient.cornerRadius = 8
         return gradient
     }
 
@@ -61,18 +60,17 @@ extension UIView {
         return gradient
     }
 
-    func getGlass() -> CAGradientLayer {
+    func getGlass(_ colors: [UIColor] = [#colorLiteral(red: 0.2487239394, green: 0.2487239394, blue: 0.2487239394, alpha: 0.3111386637), #colorLiteral(red: 0.4987951133, green: 0.4987951133, blue: 0.4987951133, alpha: 0), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)], reflection: [UIColor] = [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0.138755498), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3890394677)]) -> CAGradientLayer {
         let gradient = CAGradientLayer()
-        let colors = [#colorLiteral(red: 0.2487239394, green: 0.2487239394, blue: 0.2487239394, alpha: 0.3111386637), #colorLiteral(red: 0.4987951133, green: 0.4987951133, blue: 0.4987951133, alpha: 0), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)]
         let bounds = self.bounds
         gradient.frame = bounds
         gradient.colors = [colors[0].cgColor, colors[1].cgColor, colors[2].cgColor]
         gradient.locations = [0.0, 0.20, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.cornerRadius = self.bounds.height / 2
+        gradient.cornerRadius = 8
         gradient.masksToBounds = true
-        gradient.addSublayer(getReflection())
+        gradient.addSublayer(getReflection(reflection))
         return gradient
     }
 
@@ -88,9 +86,8 @@ extension UIView {
         return gradient
     }
 
-    func getGlass2() -> CAGradientLayer {
+    func getGlass2(_ colors: [UIColor] = [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3333843562)]) -> CAGradientLayer {
         let gradient = CAGradientLayer()
-        let colors = [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3333843562)]
         let offset = CGFloat(70)
         gradient.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y + bounds.height / 2 - offset, width: bounds.width, height: offset)
         gradient.colors = [colors[0].cgColor, colors[1].cgColor]
@@ -111,15 +108,18 @@ extension UIView {
     }
 
     // Make PickerView or DatePickerView to look like in older IOS versions.
-    func makeRetroPicker() {
-        backgroundColor = .white
-        layer.cornerRadius = 15
+    func makeRetroPicker() -> CALayer {
+        let retroLayer = CALayer()
+        layer.cornerRadius = 8
         layer.masksToBounds = true
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.darkGray.cgColor
-        layer.addSublayer(getShade())
-        layer.addSublayer(getGlass3())
-        layer.addSublayer(getGlass2())
+        layer.borderWidth = 6
+        layer.borderColor = UIColor.black.cgColor
+        retroLayer.addSublayer(getShade())
+        retroLayer.addSublayer(getGlass3())
+        retroLayer.addSublayer(getGlass2([#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0), #colorLiteral(red: 1, green: 0.208245486, blue: 0, alpha: 0.3333843562)]))
+        layer.addSublayer(retroLayer)
+
+        return retroLayer
     }
 }
 
@@ -129,22 +129,6 @@ extension UISwitch {
         thumbTintColor = UIColor(patternImage: getThumbGradient().createGradientImage(size: self.bounds.size)!)
         onTintColor = #colorLiteral(red: 0.003921568627, green: 0.4549019608, blue: 1, alpha: 1)
         layer.addSublayer(getGlass())
-    }
-
-}
-
-extension UIButton {
-    // Make button look like in older IOS versions.
-    func makeRetroUI() {
-        let gradient = getGlass()
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 1
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 1
-        layer.addSublayer(gradient)
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
-        layer.cornerRadius = 15
     }
 
 }
@@ -159,5 +143,71 @@ extension CAGradientLayer {
         }
         UIGraphicsEndImageContext()
         return gradientImage
+    }
+}
+
+class RetroStack: UIStackView {
+    lazy var gradientLayer: CALayer = makeRetroUI()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = self.bounds
+        layer.cornerRadius = 8
+        layer.masksToBounds = true
+    }
+
+    func makeRetroUI() -> CALayer {
+        let gradient = getGlass(reflection: [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0.08800082113), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1796343537)])
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 1
+        layer.addSublayer(gradient)
+        layer.cornerRadius = 8
+
+        return gradient
+    }
+}
+
+class RetroUIButton: UIButton {
+    lazy var gradientLayer: CALayer = makeRetroUI()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = self.bounds
+    }
+
+    // Make button look like in older IOS versions.
+    func makeRetroUI() -> CALayer {
+        let gradient = getGlass(reflection: [#colorLiteral(red: 0.8631671386, green: 0.8631671386, blue: 0.8631671386, alpha: 0.08800082113), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1796343537)])
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 1
+        layer.addSublayer(gradient)
+        layer.cornerRadius = 8
+
+        return gradient
+    }
+
+    static func makeButton() -> RetroUIButton {
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = .init(top: 8, leading: 14, bottom: 8, trailing: 14)
+        let button = RetroUIButton(configuration: configuration)
+        button.setTitleColor(.white, for: .normal)
+
+        return button
+    }
+}
+
+class RetroUIPicker: UIPickerView {
+    lazy var gradientLayer: CALayer = makeRetroPicker()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = self.bounds
+        for layer in gradientLayer.sublayers ?? [] {
+            layer.frame = self.bounds
+        }
     }
 }

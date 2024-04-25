@@ -59,6 +59,12 @@ class EditroAudioInteractor {
         }
     }
 
+    func stop() {
+        instruments.forEach { instrument in
+            instrument.sequencer.stop()
+        }
+    }
+
     func setTempo(_ tempo: Double) {
         instruments.forEach { instrument in
             instrument.setTempo(tempo)

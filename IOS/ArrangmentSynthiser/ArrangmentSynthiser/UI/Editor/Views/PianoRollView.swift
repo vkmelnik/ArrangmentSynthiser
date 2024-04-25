@@ -136,7 +136,7 @@ struct PianoRollView: View {
             if newValue {
                 selectedModel.notes = []
             }
-        }
+        }.edgesIgnoringSafeArea([.leading, .trailing])
     }
 
     func snap(note: PianoRollNote, offset: CGSize, lengthOffset: CGFloat = 0.0) -> PianoRollNote {

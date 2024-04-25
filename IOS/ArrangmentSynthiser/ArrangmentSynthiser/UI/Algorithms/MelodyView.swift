@@ -23,20 +23,20 @@ class MelodyView: AlgorithmView {
     let scaleNames: [String] = ["Авто", "Мажор", "Минор"]
     let notes: [String] = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 
-    var scalePickerView = UIPickerView()
-    var tonicPickerView = UIPickerView()
+    var scalePickerView = NamedPickerView(name: "Лад")
+    var tonicPickerView = NamedPickerView(name: "Тоника")
     var onScaleChange: ((MelodyScale) -> Void)? = nil
     var onTonicChange: ((String) -> Void)? = nil
 
     override init() {
         super.init()
-        scalePickerView.tag = 0
-        scalePickerView.dataSource = self
-        scalePickerView.delegate = self
+        scalePickerView.pickerView.tag = 0
+        scalePickerView.pickerView.dataSource = self
+        scalePickerView.pickerView.delegate = self
         stack.addArrangedSubview(scalePickerView)
-        tonicPickerView.tag = 1
-        tonicPickerView.dataSource = self
-        tonicPickerView.delegate = self
+        tonicPickerView.pickerView.tag = 1
+        tonicPickerView.pickerView.dataSource = self
+        tonicPickerView.pickerView.delegate = self
         stack.addArrangedSubview(tonicPickerView)
     }
 
@@ -60,9 +60,9 @@ extension MelodyView: UIPickerViewDataSource, UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if pickerView.tag == 0 {
-            return NSAttributedString(string: scaleNames[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            return NSAttributedString(string: scaleNames[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         } else {
-            return NSAttributedString(string: notes[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            return NSAttributedString(string: notes[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         }
     }
 

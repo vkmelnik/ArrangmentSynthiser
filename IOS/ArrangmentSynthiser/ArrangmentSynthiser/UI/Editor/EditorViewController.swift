@@ -28,7 +28,7 @@ class EditorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white: 0.1, alpha: 1)
+        view.backgroundColor = SynthColors.backgroundPrimary
         configureUI()
     }
 
@@ -56,6 +56,7 @@ class EditorViewController: UIViewController {
         toolbar.setHeight(70)
 
         toolbar.playButton.addTarget(self, action: #selector(onPlayButton), for: .touchUpInside)
+        toolbar.stopButton.addTarget(self, action: #selector(onStopButton), for: .touchUpInside)
         toolbar.selectButton.addTarget(self, action: #selector(onSelectButton), for: .touchUpInside)
         toolbar.settingsButton.addTarget(self, action: #selector(onSettingsButton), for: .touchUpInside)
         toolbar.algorithmsButton.addTarget(self, action: #selector(onAlgorithmsButton), for: .touchUpInside)
@@ -103,6 +104,11 @@ class EditorViewController: UIViewController {
     private func onPlayButton() {
         loadTrack()
         audio.play()
+    }
+
+    @objc
+    private func onStopButton() {
+        audio.stop()
     }
 
     @objc
