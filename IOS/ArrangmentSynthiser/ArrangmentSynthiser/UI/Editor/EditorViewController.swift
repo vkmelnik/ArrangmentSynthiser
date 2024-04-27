@@ -12,6 +12,9 @@ import PianoRoll
 class EditorViewController: UIViewController {
     let settingsViewController = SettingsViewController()
     let audio = EditorAudioInteractor.shared
+    let recording = RecordingInteractor()
+    private var recordedNotes: [PianoRollNote] = []
+
     // Модель всех нот.
     var model: PianoRollModel = PianoRollModel(notes: [], length: 1, height: 1)
     // Модель, содержащая только выделенные ноты.
@@ -35,12 +38,17 @@ class EditorViewController: UIViewController {
         configureUI()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        recording.askMircophonePermission()
+    }
+
     private func configureUI() {
         settingsViewController.tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
         settingsViewController.lengthSlider.slider.addTarget(self, action: #selector(onLengthChange), for: .valueChanged)
         configurePianoRoll()
         configureToolbar()
         configureAlgorithmsView()
+        configureRecording()
     }
 
     private func configureAlgorithmsView() {
@@ -91,6 +99,11 @@ class EditorViewController: UIViewController {
         rhythmView.generateButton.addTarget(self, action: #selector(onGenerateRhythmButton), for: .touchUpInside)
     }
 
+    private func configureRecording() {
+        toolbar.recordButton.addTarget(self, action: #selector(onRecordButton), for: .touchUpInside)
+        recording.delegate = self
+    }
+
     private func configurePianoRoll() {
         self.pianoRoll = PianoRollView(pianoRollDelegate: self, length: 32, height: 120)
         let pianoRoll = SwiftUIAdapter(view: self.pianoRoll, parent: self).uiView
@@ -120,6 +133,19 @@ class EditorViewController: UIViewController {
     private func onStopButton() {
         audio.stop()
         pianoRoll?.pianoRollSettings.tempo = 1
+    }
+
+    @objc
+    private func onRecordButton() {
+        if recording.active {
+            recording.stop()
+            toolbar.recordButton.backgroundColor = .darkGray
+            pianoRoll?.pianoRollSettings.addedNotes = recordedNotes
+        } else {
+            recordedNotes = []
+            recording.start()
+            toolbar.recordButton.backgroundColor = .red
+        }
     }
 
     @objc
@@ -155,6 +181,7 @@ class EditorViewController: UIViewController {
         if pianoRoll?.pianoRollSettings.tempo ?? 0 > 2 {
             pianoRoll?.pianoRollSettings.tempo = sender.value
         }
+        recording.tempo = Double(Int(sender.value))
     }
 
     @objc
@@ -239,5 +266,11 @@ extension EditorViewController: PianoRollDelegate {
         } else {
             selectionModel = nil
         }
+    }
+}
+
+extension EditorViewController: RecordingDelegate {
+    func onNote(_ note: PianoRollNote) {
+        recordedNotes.append(note)
     }
 }

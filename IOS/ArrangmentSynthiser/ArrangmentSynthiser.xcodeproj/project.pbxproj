@@ -17,6 +17,45 @@
 		DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809132B5995DD00E49A0A /* EditorViewController.swift */; };
 		DA5809192B5995E900E49A0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5809182B5995E900E49A0A /* Assets.xcassets */; };
 		DA58091C2B5995E900E49A0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA58091A2B5995E900E49A0A /* LaunchScreen.storyboard */; };
+		DAC94C252BDD7BF1000FA164 /* Beethoven.h in Headers */ = {isa = PBXBuildFile; fileRef = DAC94C242BDD7BF1000FA164 /* Beethoven.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAC94C282BDD7BF1000FA164 /* Beethoven.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC94C222BDD7BF1000FA164 /* Beethoven.framework */; };
+		DAC94C2A2BDD7BF1000FA164 /* Beethoven.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAC94C222BDD7BF1000FA164 /* Beethoven.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DAC94C512BDD7C33000FA164 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C2F2BDD7C33000FA164 /* Config.swift */; };
+		DAC94C522BDD7C33000FA164 /* YINUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C312BDD7C33000FA164 /* YINUtil.swift */; };
+		DAC94C532BDD7C33000FA164 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C322BDD7C33000FA164 /* Buffer.swift */; };
+		DAC94C542BDD7C33000FA164 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C342BDD7C33000FA164 /* Array+Extensions.swift */; };
+		DAC94C552BDD7C33000FA164 /* BarycentricEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C372BDD7C33000FA164 /* BarycentricEstimator.swift */; };
+		DAC94C562BDD7C33000FA164 /* MaxValueEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C382BDD7C33000FA164 /* MaxValueEstimator.swift */; };
+		DAC94C572BDD7C33000FA164 /* JainsEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C392BDD7C33000FA164 /* JainsEstimator.swift */; };
+		DAC94C582BDD7C33000FA164 /* QuinnsSecondEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C3A2BDD7C33000FA164 /* QuinnsSecondEstimator.swift */; };
+		DAC94C592BDD7C33000FA164 /* QuinnsFirstEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C3B2BDD7C33000FA164 /* QuinnsFirstEstimator.swift */; };
+		DAC94C5A2BDD7C33000FA164 /* HPSEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C3C2BDD7C33000FA164 /* HPSEstimator.swift */; };
+		DAC94C5B2BDD7C33000FA164 /* YINEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C3D2BDD7C33000FA164 /* YINEstimator.swift */; };
+		DAC94C5C2BDD7C33000FA164 /* QuadradicEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C3E2BDD7C33000FA164 /* QuadradicEstimator.swift */; };
+		DAC94C5D2BDD7C33000FA164 /* LocationEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C3F2BDD7C33000FA164 /* LocationEstimator.swift */; };
+		DAC94C5E2BDD7C33000FA164 /* EstimationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C402BDD7C33000FA164 /* EstimationError.swift */; };
+		DAC94C5F2BDD7C33000FA164 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C412BDD7C33000FA164 /* Estimator.swift */; };
+		DAC94C602BDD7C33000FA164 /* EstimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C422BDD7C33000FA164 /* EstimationFactory.swift */; };
+		DAC94C612BDD7C33000FA164 /* EstimationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C432BDD7C33000FA164 /* EstimationStrategy.swift */; };
+		DAC94C622BDD7C33000FA164 /* SignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C452BDD7C33000FA164 /* SignalTracker.swift */; };
+		DAC94C632BDD7C33000FA164 /* SimulatorSignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C472BDD7C33000FA164 /* SimulatorSignalTracker.swift */; };
+		DAC94C642BDD7C33000FA164 /* OutputSignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C482BDD7C33000FA164 /* OutputSignalTracker.swift */; };
+		DAC94C652BDD7C33000FA164 /* InputSignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C492BDD7C33000FA164 /* InputSignalTracker.swift */; };
+		DAC94C662BDD7C33000FA164 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C4B2BDD7C33000FA164 /* Transformer.swift */; };
+		DAC94C672BDD7C33000FA164 /* YINTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C4D2BDD7C33000FA164 /* YINTransformer.swift */; };
+		DAC94C682BDD7C33000FA164 /* FFTTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C4E2BDD7C33000FA164 /* FFTTransformer.swift */; };
+		DAC94C692BDD7C33000FA164 /* SimpleTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C4F2BDD7C33000FA164 /* SimpleTransformer.swift */; };
+		DAC94C6A2BDD7C33000FA164 /* PitchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C502BDD7C33000FA164 /* PitchEngine.swift */; };
+		DAC94C762BDD7C49000FA164 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C6C2BDD7C49000FA164 /* Error.swift */; };
+		DAC94C772BDD7C49000FA164 /* WaveCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C6E2BDD7C49000FA164 /* WaveCalculator.swift */; };
+		DAC94C782BDD7C49000FA164 /* NoteCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C6F2BDD7C49000FA164 /* NoteCalculator.swift */; };
+		DAC94C792BDD7C49000FA164 /* PitchCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C702BDD7C49000FA164 /* PitchCalculator.swift */; };
+		DAC94C7A2BDD7C49000FA164 /* FrequencyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C712BDD7C49000FA164 /* FrequencyValidator.swift */; };
+		DAC94C7B2BDD7C49000FA164 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C732BDD7C49000FA164 /* Pitch.swift */; };
+		DAC94C7C2BDD7C49000FA164 /* AcousticWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C742BDD7C49000FA164 /* AcousticWave.swift */; };
+		DAC94C7D2BDD7C49000FA164 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C752BDD7C49000FA164 /* Note.swift */; };
+		DAC94C7F2BDD7C8F000FA164 /* RecordingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C7E2BDD7C8F000FA164 /* RecordingInteractor.swift */; };
+		DAC94C812BDD7E41000FA164 /* RecordingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C802BDD7E41000FA164 /* RecordingDelegate.swift */; };
 		DADA865B2BBC0905006BC789 /* EditorAudioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */; };
 		DADA86602BBC0DDC006BC789 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DADA865F2BBC0DDC006BC789 /* AudioKit */; };
 		DADA86642BBC107C006BC789 /* DunneAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DADA86632BBC107C006BC789 /* DunneAudioKit */; };
@@ -52,6 +91,30 @@
 		DADA86B52BC99A43006BC789 /* SelectedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA86B42BC99A43006BC789 /* SelectedNoteView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DAC94C262BDD7BF1000FA164 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA5809042B5995DD00E49A0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAC94C212BDD7BF1000FA164;
+			remoteInfo = Beethoven;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DAC94C292BDD7BF1000FA164 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DAC94C2A2BDD7BF1000FA164 /* Beethoven.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1BAB6C5D727B048765A5022C /* Pods-ArrangmentSynthiser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArrangmentSynthiser.debug.xcconfig"; path = "Target Support Files/Pods-ArrangmentSynthiser/Pods-ArrangmentSynthiser.debug.xcconfig"; sourceTree = "<group>"; };
 		9C9975A2C5E80D6A657E39D4 /* Pods_ArrangmentSynthiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArrangmentSynthiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +129,44 @@
 		DA5809182B5995E900E49A0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA58091B2B5995E900E49A0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA58091D2B5995E900E49A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAC94C222BDD7BF1000FA164 /* Beethoven.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Beethoven.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC94C242BDD7BF1000FA164 /* Beethoven.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Beethoven.h; sourceTree = "<group>"; };
+		DAC94C2F2BDD7C33000FA164 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		DAC94C312BDD7C33000FA164 /* YINUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YINUtil.swift; sourceTree = "<group>"; };
+		DAC94C322BDD7C33000FA164 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
+		DAC94C342BDD7C33000FA164 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		DAC94C372BDD7C33000FA164 /* BarycentricEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarycentricEstimator.swift; sourceTree = "<group>"; };
+		DAC94C382BDD7C33000FA164 /* MaxValueEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxValueEstimator.swift; sourceTree = "<group>"; };
+		DAC94C392BDD7C33000FA164 /* JainsEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JainsEstimator.swift; sourceTree = "<group>"; };
+		DAC94C3A2BDD7C33000FA164 /* QuinnsSecondEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuinnsSecondEstimator.swift; sourceTree = "<group>"; };
+		DAC94C3B2BDD7C33000FA164 /* QuinnsFirstEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuinnsFirstEstimator.swift; sourceTree = "<group>"; };
+		DAC94C3C2BDD7C33000FA164 /* HPSEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HPSEstimator.swift; sourceTree = "<group>"; };
+		DAC94C3D2BDD7C33000FA164 /* YINEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YINEstimator.swift; sourceTree = "<group>"; };
+		DAC94C3E2BDD7C33000FA164 /* QuadradicEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadradicEstimator.swift; sourceTree = "<group>"; };
+		DAC94C3F2BDD7C33000FA164 /* LocationEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationEstimator.swift; sourceTree = "<group>"; };
+		DAC94C402BDD7C33000FA164 /* EstimationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimationError.swift; sourceTree = "<group>"; };
+		DAC94C412BDD7C33000FA164 /* Estimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Estimator.swift; sourceTree = "<group>"; };
+		DAC94C422BDD7C33000FA164 /* EstimationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimationFactory.swift; sourceTree = "<group>"; };
+		DAC94C432BDD7C33000FA164 /* EstimationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimationStrategy.swift; sourceTree = "<group>"; };
+		DAC94C452BDD7C33000FA164 /* SignalTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalTracker.swift; sourceTree = "<group>"; };
+		DAC94C472BDD7C33000FA164 /* SimulatorSignalTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatorSignalTracker.swift; sourceTree = "<group>"; };
+		DAC94C482BDD7C33000FA164 /* OutputSignalTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputSignalTracker.swift; sourceTree = "<group>"; };
+		DAC94C492BDD7C33000FA164 /* InputSignalTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSignalTracker.swift; sourceTree = "<group>"; };
+		DAC94C4B2BDD7C33000FA164 /* Transformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		DAC94C4D2BDD7C33000FA164 /* YINTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YINTransformer.swift; sourceTree = "<group>"; };
+		DAC94C4E2BDD7C33000FA164 /* FFTTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFTTransformer.swift; sourceTree = "<group>"; };
+		DAC94C4F2BDD7C33000FA164 /* SimpleTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTransformer.swift; sourceTree = "<group>"; };
+		DAC94C502BDD7C33000FA164 /* PitchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchEngine.swift; sourceTree = "<group>"; };
+		DAC94C6C2BDD7C49000FA164 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		DAC94C6E2BDD7C49000FA164 /* WaveCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveCalculator.swift; sourceTree = "<group>"; };
+		DAC94C6F2BDD7C49000FA164 /* NoteCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCalculator.swift; sourceTree = "<group>"; };
+		DAC94C702BDD7C49000FA164 /* PitchCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchCalculator.swift; sourceTree = "<group>"; };
+		DAC94C712BDD7C49000FA164 /* FrequencyValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyValidator.swift; sourceTree = "<group>"; };
+		DAC94C732BDD7C49000FA164 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
+		DAC94C742BDD7C49000FA164 /* AcousticWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcousticWave.swift; sourceTree = "<group>"; };
+		DAC94C752BDD7C49000FA164 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		DAC94C7E2BDD7C8F000FA164 /* RecordingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingInteractor.swift; sourceTree = "<group>"; };
+		DAC94C802BDD7E41000FA164 /* RecordingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingDelegate.swift; sourceTree = "<group>"; };
 		DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorAudioInteractor.swift; sourceTree = "<group>"; };
 		DADA86662BBC29C0006BC789 /* View+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Style.swift"; sourceTree = "<group>"; };
 		DADA86682BBC2B25006BC789 /* View+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Pin.swift"; sourceTree = "<group>"; };
@@ -108,6 +209,14 @@
 				A76D9DEEA964C1E55EA26C67 /* Pods_ArrangmentSynthiser.framework in Frameworks */,
 				DADA86922BBF2764006BC789 /* DevoloopAudioKit in Frameworks */,
 				DADA86642BBC107C006BC789 /* DunneAudioKit in Frameworks */,
+				DAC94C282BDD7BF1000FA164 /* Beethoven.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC94C1F2BDD7BF1000FA164 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				DA58090E2B5995DD00E49A0A /* ArrangmentSynthiser */,
+				DAC94C232BDD7BF1000FA164 /* Beethoven */,
 				DA58090D2B5995DD00E49A0A /* Products */,
 				0D6F9DDA523FA2222ABA3B7F /* Pods */,
 				E2EFC2405E74318607988A55 /* Frameworks */,
@@ -137,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */,
+				DAC94C222BDD7BF1000FA164 /* Beethoven.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +286,144 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		DAC94C232BDD7BF1000FA164 /* Beethoven */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C6B2BDD7C49000FA164 /* Pitchy-Source */,
+				DAC94C2E2BDD7C33000FA164 /* Source */,
+				DAC94C242BDD7BF1000FA164 /* Beethoven.h */,
+			);
+			path = Beethoven;
+			sourceTree = "<group>";
+		};
+		DAC94C2E2BDD7C33000FA164 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C2F2BDD7C33000FA164 /* Config.swift */,
+				DAC94C302BDD7C33000FA164 /* Library */,
+				DAC94C352BDD7C33000FA164 /* Estimation */,
+				DAC94C442BDD7C33000FA164 /* SignalTracking */,
+				DAC94C4A2BDD7C33000FA164 /* Transform */,
+				DAC94C502BDD7C33000FA164 /* PitchEngine.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		DAC94C302BDD7C33000FA164 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C312BDD7C33000FA164 /* YINUtil.swift */,
+				DAC94C322BDD7C33000FA164 /* Buffer.swift */,
+				DAC94C332BDD7C33000FA164 /* Extensions */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		DAC94C332BDD7C33000FA164 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C342BDD7C33000FA164 /* Array+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DAC94C352BDD7C33000FA164 /* Estimation */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C362BDD7C33000FA164 /* Strategies */,
+				DAC94C3F2BDD7C33000FA164 /* LocationEstimator.swift */,
+				DAC94C402BDD7C33000FA164 /* EstimationError.swift */,
+				DAC94C412BDD7C33000FA164 /* Estimator.swift */,
+				DAC94C422BDD7C33000FA164 /* EstimationFactory.swift */,
+				DAC94C432BDD7C33000FA164 /* EstimationStrategy.swift */,
+			);
+			path = Estimation;
+			sourceTree = "<group>";
+		};
+		DAC94C362BDD7C33000FA164 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C372BDD7C33000FA164 /* BarycentricEstimator.swift */,
+				DAC94C382BDD7C33000FA164 /* MaxValueEstimator.swift */,
+				DAC94C392BDD7C33000FA164 /* JainsEstimator.swift */,
+				DAC94C3A2BDD7C33000FA164 /* QuinnsSecondEstimator.swift */,
+				DAC94C3B2BDD7C33000FA164 /* QuinnsFirstEstimator.swift */,
+				DAC94C3C2BDD7C33000FA164 /* HPSEstimator.swift */,
+				DAC94C3D2BDD7C33000FA164 /* YINEstimator.swift */,
+				DAC94C3E2BDD7C33000FA164 /* QuadradicEstimator.swift */,
+			);
+			path = Strategies;
+			sourceTree = "<group>";
+		};
+		DAC94C442BDD7C33000FA164 /* SignalTracking */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C452BDD7C33000FA164 /* SignalTracker.swift */,
+				DAC94C462BDD7C33000FA164 /* Units */,
+			);
+			path = SignalTracking;
+			sourceTree = "<group>";
+		};
+		DAC94C462BDD7C33000FA164 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C472BDD7C33000FA164 /* SimulatorSignalTracker.swift */,
+				DAC94C482BDD7C33000FA164 /* OutputSignalTracker.swift */,
+				DAC94C492BDD7C33000FA164 /* InputSignalTracker.swift */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
+		DAC94C4A2BDD7C33000FA164 /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C4B2BDD7C33000FA164 /* Transformer.swift */,
+				DAC94C4C2BDD7C33000FA164 /* Strategies */,
+			);
+			path = Transform;
+			sourceTree = "<group>";
+		};
+		DAC94C4C2BDD7C33000FA164 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C4D2BDD7C33000FA164 /* YINTransformer.swift */,
+				DAC94C4E2BDD7C33000FA164 /* FFTTransformer.swift */,
+				DAC94C4F2BDD7C33000FA164 /* SimpleTransformer.swift */,
+			);
+			path = Strategies;
+			sourceTree = "<group>";
+		};
+		DAC94C6B2BDD7C49000FA164 /* Pitchy-Source */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C6C2BDD7C49000FA164 /* Error.swift */,
+				DAC94C6D2BDD7C49000FA164 /* Calculators */,
+				DAC94C712BDD7C49000FA164 /* FrequencyValidator.swift */,
+				DAC94C722BDD7C49000FA164 /* Data */,
+			);
+			path = "Pitchy-Source";
+			sourceTree = "<group>";
+		};
+		DAC94C6D2BDD7C49000FA164 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C6E2BDD7C49000FA164 /* WaveCalculator.swift */,
+				DAC94C6F2BDD7C49000FA164 /* NoteCalculator.swift */,
+				DAC94C702BDD7C49000FA164 /* PitchCalculator.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
+		DAC94C722BDD7C49000FA164 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C732BDD7C49000FA164 /* Pitch.swift */,
+				DAC94C742BDD7C49000FA164 /* AcousticWave.swift */,
+				DAC94C752BDD7C49000FA164 /* Note.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		DADA86582BBC07D6006BC789 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +444,7 @@
 				DA5809132B5995DD00E49A0A /* EditorViewController.swift */,
 				DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */,
 				DADA86962BBF2F37006BC789 /* InstrumentPlayer.swift */,
+				DAC94C7E2BDD7C8F000FA164 /* RecordingInteractor.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -222,6 +472,7 @@
 			children = (
 				DADA86722BBC5069006BC789 /* PianoRollLogic.swift */,
 				DADA86982BBF2FD8006BC789 /* InstrumentLogic.swift */,
+				DAC94C802BDD7E41000FA164 /* RecordingDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -323,6 +574,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		DAC94C1D2BDD7BF1000FA164 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC94C252BDD7BF1000FA164 /* Beethoven.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		DA58090B2B5995DD00E49A0A /* ArrangmentSynthiser */ = {
 			isa = PBXNativeTarget;
@@ -332,10 +594,12 @@
 				DA5809082B5995DD00E49A0A /* Sources */,
 				DA5809092B5995DD00E49A0A /* Frameworks */,
 				DA58090A2B5995DD00E49A0A /* Resources */,
+				DAC94C292BDD7BF1000FA164 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DAC94C272BDD7BF1000FA164 /* PBXTargetDependency */,
 			);
 			name = ArrangmentSynthiser;
 			packageProductDependencies = (
@@ -350,6 +614,24 @@
 			productReference = DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DAC94C212BDD7BF1000FA164 /* Beethoven */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC94C2B2BDD7BF1000FA164 /* Build configuration list for PBXNativeTarget "Beethoven" */;
+			buildPhases = (
+				DAC94C1D2BDD7BF1000FA164 /* Headers */,
+				DAC94C1E2BDD7BF1000FA164 /* Sources */,
+				DAC94C1F2BDD7BF1000FA164 /* Frameworks */,
+				DAC94C202BDD7BF1000FA164 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Beethoven;
+			productName = Beethoven;
+			productReference = DAC94C222BDD7BF1000FA164 /* Beethoven.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -361,6 +643,9 @@
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					DA58090B2B5995DD00E49A0A = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					DAC94C212BDD7BF1000FA164 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -387,6 +672,7 @@
 			projectRoot = "";
 			targets = (
 				DA58090B2B5995DD00E49A0A /* ArrangmentSynthiser */,
+				DAC94C212BDD7BF1000FA164 /* Beethoven */,
 			);
 		};
 /* End PBXProject section */
@@ -398,6 +684,13 @@
 			files = (
 				DA58091C2B5995E900E49A0A /* LaunchScreen.storyboard in Resources */,
 				DA5809192B5995E900E49A0A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC94C202BDD7BF1000FA164 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +729,7 @@
 				DA2042EA2BDA9A6700E04D5E /* SynthStyle.swift in Sources */,
 				DADA86AC2BC6E01C006BC789 /* Components+Encode.swift in Sources */,
 				DADA868A2BBEFB36006BC789 /* AlgorithmView.swift in Sources */,
+				DAC94C7F2BDD7C8F000FA164 /* RecordingInteractor.swift in Sources */,
 				DADA86882BBDD4BB006BC789 /* AlgorithmsView.swift in Sources */,
 				DADA86A92BC6DDAB006BC789 /* Endpoints.swift in Sources */,
 				DADA868F2BBF0488006BC789 /* Networking.swift in Sources */,
@@ -462,6 +756,7 @@
 				DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */,
 				DADA86972BBF2F37006BC789 /* InstrumentPlayer.swift in Sources */,
 				DADA869C2BBF3135006BC789 /* ElectricMandolin.swift in Sources */,
+				DAC94C812BDD7E41000FA164 /* RecordingDelegate.swift in Sources */,
 				DADA867A2BBDB15E006BC789 /* SettingsViewController.swift in Sources */,
 				DADA86A32BBF3873006BC789 /* InstrumentsCoding.swift in Sources */,
 				DADA86AE2BC6E05F006BC789 /* AlgorithmsWorker.swift in Sources */,
@@ -470,7 +765,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAC94C1E2BDD7BF1000FA164 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC94C582BDD7C33000FA164 /* QuinnsSecondEstimator.swift in Sources */,
+				DAC94C522BDD7C33000FA164 /* YINUtil.swift in Sources */,
+				DAC94C682BDD7C33000FA164 /* FFTTransformer.swift in Sources */,
+				DAC94C572BDD7C33000FA164 /* JainsEstimator.swift in Sources */,
+				DAC94C642BDD7C33000FA164 /* OutputSignalTracker.swift in Sources */,
+				DAC94C512BDD7C33000FA164 /* Config.swift in Sources */,
+				DAC94C592BDD7C33000FA164 /* QuinnsFirstEstimator.swift in Sources */,
+				DAC94C762BDD7C49000FA164 /* Error.swift in Sources */,
+				DAC94C5D2BDD7C33000FA164 /* LocationEstimator.swift in Sources */,
+				DAC94C5C2BDD7C33000FA164 /* QuadradicEstimator.swift in Sources */,
+				DAC94C602BDD7C33000FA164 /* EstimationFactory.swift in Sources */,
+				DAC94C612BDD7C33000FA164 /* EstimationStrategy.swift in Sources */,
+				DAC94C782BDD7C49000FA164 /* NoteCalculator.swift in Sources */,
+				DAC94C672BDD7C33000FA164 /* YINTransformer.swift in Sources */,
+				DAC94C6A2BDD7C33000FA164 /* PitchEngine.swift in Sources */,
+				DAC94C552BDD7C33000FA164 /* BarycentricEstimator.swift in Sources */,
+				DAC94C792BDD7C49000FA164 /* PitchCalculator.swift in Sources */,
+				DAC94C7A2BDD7C49000FA164 /* FrequencyValidator.swift in Sources */,
+				DAC94C662BDD7C33000FA164 /* Transformer.swift in Sources */,
+				DAC94C562BDD7C33000FA164 /* MaxValueEstimator.swift in Sources */,
+				DAC94C5F2BDD7C33000FA164 /* Estimator.swift in Sources */,
+				DAC94C7D2BDD7C49000FA164 /* Note.swift in Sources */,
+				DAC94C5E2BDD7C33000FA164 /* EstimationError.swift in Sources */,
+				DAC94C532BDD7C33000FA164 /* Buffer.swift in Sources */,
+				DAC94C772BDD7C49000FA164 /* WaveCalculator.swift in Sources */,
+				DAC94C5A2BDD7C33000FA164 /* HPSEstimator.swift in Sources */,
+				DAC94C692BDD7C33000FA164 /* SimpleTransformer.swift in Sources */,
+				DAC94C632BDD7C33000FA164 /* SimulatorSignalTracker.swift in Sources */,
+				DAC94C542BDD7C33000FA164 /* Array+Extensions.swift in Sources */,
+				DAC94C652BDD7C33000FA164 /* InputSignalTracker.swift in Sources */,
+				DAC94C622BDD7C33000FA164 /* SignalTracker.swift in Sources */,
+				DAC94C7C2BDD7C49000FA164 /* AcousticWave.swift in Sources */,
+				DAC94C7B2BDD7C49000FA164 /* Pitch.swift in Sources */,
+				DAC94C5B2BDD7C33000FA164 /* YINEstimator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DAC94C272BDD7BF1000FA164 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAC94C212BDD7BF1000FA164 /* Beethoven */;
+			targetProxy = DAC94C262BDD7BF1000FA164 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DA58091A2B5995E900E49A0A /* LaunchScreen.storyboard */ = {
@@ -602,10 +946,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BAB6C5D727B048765A5022C /* Pods-ArrangmentSynthiser.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7J58STCQ74;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArrangmentSynthiser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -628,10 +974,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED85E86D8D6E154278C4ABC9 /* Pods-ArrangmentSynthiser.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7J58STCQ74;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArrangmentSynthiser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -647,6 +995,64 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DAC94C2C2BDD7BF1000FA164 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.hse.Beethoven;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DAC94C2D2BDD7BF1000FA164 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.hse.Beethoven;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -667,6 +1073,15 @@
 			buildConfigurations = (
 				DA5809212B5995E900E49A0A /* Debug */,
 				DA5809222B5995E900E49A0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC94C2B2BDD7BF1000FA164 /* Build configuration list for PBXNativeTarget "Beethoven" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC94C2C2BDD7BF1000FA164 /* Debug */,
+				DAC94C2D2BDD7BF1000FA164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -57,6 +57,9 @@ class EditorAudioInteractor {
     }
 
     func play() {
+        if !engine.avEngine.isRunning {
+            try? engine.start()
+        }
         instruments.forEach { instrument in
             instrument.sequencer.play()
         }

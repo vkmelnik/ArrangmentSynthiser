@@ -25,6 +25,14 @@ class EditorToolbarView: UIView {
         return button
     }()
 
+    lazy var recordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(" 🎤 ", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.1539273262, green: 0.1691191494, blue: 0.2076610327, alpha: 1)
+
+        return button
+    }()
+
     lazy var settingsButton: UIButton = {
         let button = UIButton()
         button.setTitle("  Настройки  ", for: .normal)
@@ -113,7 +121,7 @@ class EditorToolbarView: UIView {
         stack.pinCenterY(to: self)
         configureInstruments()
 
-        let playStack = RetroStack(arrangedSubviews: [playButton, stopButton])
+        let playStack = RetroStack(arrangedSubviews: [playButton, stopButton, recordButton])
         playStack.spacing = 2
         addSubview(playStack)
         playStack.pinLeft(to: stack.trailingAnchor, 20, .grOE).priority = .init(500)
