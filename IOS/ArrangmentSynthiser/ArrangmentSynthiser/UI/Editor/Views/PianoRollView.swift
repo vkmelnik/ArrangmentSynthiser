@@ -115,7 +115,7 @@ struct PianoRollView: View {
                         Rectangle().fill(.gray).position(x: selectionX, y: selectionY)
                             .frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
                         // Прогресс воспроизведения.
-                        Rectangle().fill(.orange).frame(width: 2).offset(x: playbackProgress)
+                        Rectangle().fill(.orange).opacity(0).frame(width: 2).offset(x: playbackProgress)
                             .onChange(of: pianoRollSettings.tempo) { newValue in
                                 changeAnimation()
                             }

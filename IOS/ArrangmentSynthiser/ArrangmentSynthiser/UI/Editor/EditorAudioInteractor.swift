@@ -12,7 +12,8 @@ import DevoloopAudioKit
 import Foundation
 import PianoRoll
 
-class EditroAudioInteractor {
+class EditorAudioInteractor {
+    static let shared = EditorAudioInteractor()
     let algorithmsWorker = AlgorithmsWorker(networking: Networking(baseURL: "http://127.0.0.1:5000"))
 
     let engine = AudioEngine()
@@ -23,8 +24,10 @@ class EditroAudioInteractor {
         InstrumentPlayer(Synthiser())
     ]
     lazy var masterInstrument = instruments[3]
+    // Ноты, подготовленные для генерации вариаций.
+    var midiForGeneration: Data?
 
-    init() {
+    private init() {
         let mixer = Mixer(instruments.map({ instrument in
             instrument.node
         }))
@@ -72,7 +75,7 @@ class EditroAudioInteractor {
     }
 
     func generateMelody(scale: MelodyScaleWithTonic, completion: @escaping ([PianoRollNote], Error?) -> Void) {
-        guard let midi = instruments[3].getMidi() else {
+        guard let midi = getMIDI() else {
             completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
             return
         }
@@ -86,7 +89,7 @@ class EditroAudioInteractor {
     }
 
     func generateChords(scale: MelodyScaleWithTonic, completion: @escaping ([PianoRollNote], Error?) -> Void) {
-        guard let midi = instruments[3].getMidi() else {
+        guard let midi = getMIDI() else {
             completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
             return
         }
@@ -100,7 +103,7 @@ class EditroAudioInteractor {
     }
 
     func generateRhythm(completion: @escaping ([PianoRollNote], Error?) -> Void) {
-        guard let midi = instruments[3].getMidi() else {
+        guard let midi = getMIDI() else {
             completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
             return
         }
@@ -112,7 +115,24 @@ class EditroAudioInteractor {
         }
     }
 
-    func loadServerAnswer(data: Data?, error: Error?, completion: @escaping ([PianoRollNote], Error?) -> Void) {
+    func stopGeneration() {
+        midiForGeneration = nil
+    }
+
+    private func getMIDI() -> Data? {
+        guard let midiForGeneration = midiForGeneration else {
+            guard let midi = instruments[3].getMidi() else {
+                return nil
+            }
+
+            self.midiForGeneration = midi
+            return midi
+        }
+
+        return midiForGeneration
+    }
+
+    private func loadServerAnswer(data: Data?, error: Error?, completion: @escaping ([PianoRollNote], Error?) -> Void) {
         if let error = error {
             completion([], error)
         } else if let data = data {

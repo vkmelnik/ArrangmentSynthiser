@@ -11,8 +11,10 @@ import PianoRoll
 
 class EditorViewController: UIViewController {
     let settingsViewController = SettingsViewController()
-    let audio = EditroAudioInteractor()
+    let audio = EditorAudioInteractor.shared
+    // Модель всех нот.
     var model: PianoRollModel = PianoRollModel(notes: [], length: 1, height: 1)
+    // Модель, содержащая только выделенные ноты.
     var selectionModel: PianoRollModel?
     var toolbar = EditorToolbarView()
     var pianoRoll: PianoRollView?
@@ -163,6 +165,7 @@ class EditorViewController: UIViewController {
     @objc
     private func onAlgorithmsButton(sender: UISlider, forEvent event: UIEvent) {
         let isActive = algorithmsViewOnConstraint?.isActive ?? false
+        audio.stopGeneration()
         algorithmsViewOnConstraint?.isActive = !isActive
         algorithmsViewOffConstraint?.isActive = isActive
         UIView.animate(withDuration: 0.2) {

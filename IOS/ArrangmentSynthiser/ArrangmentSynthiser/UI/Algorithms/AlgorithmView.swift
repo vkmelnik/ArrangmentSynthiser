@@ -59,6 +59,7 @@ class AlgorithmView: UIView {
 
     @objc
     func onBackButton() {
+        EditorAudioInteractor.shared.stopGeneration()
         removeFromSuperview()
     }
 }
