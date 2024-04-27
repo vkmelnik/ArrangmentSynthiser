@@ -38,7 +38,7 @@ def get_rhythm():
 
     notes = MelodyParser.parse(midi_data)
 
-    generator = RhythmGenerator(notes, 5, 0.5, 0.3, 5)
+    generator = RhythmGenerator(notes, 20, 0.5, 0.3, 2)
     newNotes = generator.generate()
 
     filename = MelodyParser.encode(newNotes)

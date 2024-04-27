@@ -24,6 +24,7 @@ class RhythmGenerator:
     def coherenceFunction(self, notes):
         dists = []
         same = 0
+        overlaps = 0
         for i in range(len(notes)):
             position1 = notes[i].position
             position2 = notes[(i + 1) % len(notes)].position
@@ -32,9 +33,11 @@ class RhythmGenerator:
                 dists.append(dist)
             else:
                 same += 1
+            if position1 + notes[i].duration > position2:
+                overlaps += 1
 
         outOfBounds = abs(self.start - notes[0].position) + abs(notes[len(notes)-1].position - self.end)
-        return len(set(dists)) + same + outOfBounds * 10
+        return len(set(dists)) + same * 20 + outOfBounds * 10 + overlaps * 20
 
     def __init__(self, notes, numberOfIndividums, crossoverRate, mutationRate, numberLives):
         self.start = notes[0].position
