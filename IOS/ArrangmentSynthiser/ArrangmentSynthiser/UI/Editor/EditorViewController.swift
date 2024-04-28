@@ -35,6 +35,7 @@ class EditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SynthStyle.backgroundPrimary
+        StorageInteractor.shared.delegate = self
         configureUI()
     }
 
@@ -105,7 +106,7 @@ class EditorViewController: UIViewController {
     }
 
     private func configurePianoRoll() {
-        self.pianoRoll = PianoRollView(pianoRollDelegate: self, length: 32, height: 120)
+        self.pianoRoll = PianoRollView(pianoRollDelegate: self, length: 16, height: 120)
         let pianoRoll = SwiftUIAdapter(view: self.pianoRoll, parent: self).uiView
         view.addSubview(pianoRoll)
         pianoRoll.pinLeft(to: view)
@@ -127,6 +128,8 @@ class EditorViewController: UIViewController {
         if selectionModel == nil {
             pianoRoll?.pianoRollSettings.tempo = settingsViewController.tempoSlider.slider.value
         }
+
+        save()
     }
 
     @objc
@@ -249,6 +252,15 @@ class EditorViewController: UIViewController {
             audio.loadTrack(model)
         }
     }
+
+    private func save() {
+        StorageInteractor.shared.save(
+            name: StorageInteractor.shared.currentProjectName,
+            notes: model.notes,
+            length: Double(pianoRoll?.pianoRollSettings.length ?? 16),
+            tempo: Double(pianoRoll?.pianoRollSettings.tempo ?? 120)
+        )
+    }
 }
 
 extension EditorViewController: PianoRollDelegate {
@@ -272,5 +284,25 @@ extension EditorViewController: PianoRollDelegate {
 extension EditorViewController: RecordingDelegate {
     func onNote(_ note: PianoRollNote) {
         recordedNotes.append(note)
+    }
+}
+
+extension EditorViewController: StorageDelegate {
+    func load(_ project: ProjectModel) {
+        audio.setTempo(project.tempo)
+        if pianoRoll?.pianoRollSettings.tempo ?? 0 > 2 {
+            pianoRoll?.pianoRollSettings.tempo = Float(project.tempo)
+        }
+        recording.tempo = project.tempo
+
+        pianoRoll?.pianoRollSettings.length = Int(project.length)
+        StorageInteractor.shared.currentProjectName = project.name
+
+        pianoRoll?.pianoRollSettings.addedNotes = project.notes.map({ note in
+            var note = PianoRollNote(start: note.start, length: note.length, pitch: note.pitch, text: note.text)
+            note.color = InstrumentsCoding.getColor(note)
+
+            return note
+        })
     }
 }

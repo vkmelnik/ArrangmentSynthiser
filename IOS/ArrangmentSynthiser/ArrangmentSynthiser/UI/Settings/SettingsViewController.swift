@@ -8,8 +8,10 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    var nameField = UITextField()
+    var openButton = RetroUIButton.makeButton()
     var tempoSlider = SliderView(name: "Темп: 120", value: 120, minimum: 10, maximum: 280)
-    var lengthSlider = SliderView(name: "Длина трека: 120", value: 32, minimum: 16, maximum: 128)
+    var lengthSlider = SliderView(name: "Длина трека: 120", value: 16, minimum: 16, maximum: 128)
     var doneButton = RetroUIButton.makeButton()
 
     override func viewDidLoad() {
@@ -18,9 +20,14 @@ class SettingsViewController: UIViewController {
         configureUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        nameField.text = StorageInteractor.shared.currentProjectName
+    }
+
     private func configureUI() {
-        let stack = UIStackView(arrangedSubviews: [tempoSlider, lengthSlider])
+        let stack = UIStackView(arrangedSubviews: [nameField, openButton, tempoSlider, lengthSlider])
         stack.axis = .vertical
+        stack.spacing = 4
         view.addSubview(stack)
         stack.pinHorizontal(to: view, 20)
         stack.pinCenterY(to: view)
@@ -35,6 +42,13 @@ class SettingsViewController: UIViewController {
         doneButton.pinCenterX(to: view)
         doneButton.setTitle("Готово", for: .normal)
         doneButton.addTarget(self, action: #selector(onDoneButton), for: .touchUpInside)
+
+        openButton.setTitle("Открыть проект", for: .normal)
+        openButton.addTarget(self, action: #selector(onOpenButton), for: .touchUpInside)
+
+        nameField.text = StorageInteractor.shared.currentProjectName
+        nameField.addTarget(self, action: #selector(onChangeProjectName), for: .editingChanged)
+        nameField.textColor = .white
     }
 
     @objc
@@ -50,5 +64,15 @@ class SettingsViewController: UIViewController {
     @objc
     private func onDoneButton() {
         dismiss(animated: true)
+    }
+
+    @objc
+    private func onOpenButton() {
+        self.present(StorageViewController(), animated: true)
+    }
+
+    @objc
+    private func onChangeProjectName() {
+        StorageInteractor.shared.currentProjectName = nameField.text ?? "Новый проект 1"
     }
 }

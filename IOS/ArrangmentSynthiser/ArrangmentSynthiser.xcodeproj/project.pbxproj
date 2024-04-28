@@ -56,6 +56,11 @@
 		DAC94C7D2BDD7C49000FA164 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C752BDD7C49000FA164 /* Note.swift */; };
 		DAC94C7F2BDD7C8F000FA164 /* RecordingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C7E2BDD7C8F000FA164 /* RecordingInteractor.swift */; };
 		DAC94C812BDD7E41000FA164 /* RecordingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C802BDD7E41000FA164 /* RecordingDelegate.swift */; };
+		DAC94C852BDEAF1E000FA164 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C842BDEAF1E000FA164 /* ProjectModel.swift */; };
+		DAC94C872BDEAFD7000FA164 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C862BDEAFD7000FA164 /* StorageViewController.swift */; };
+		DAC94C892BDEB07E000FA164 /* StorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C882BDEB07E000FA164 /* StorageCell.swift */; };
+		DAC94C8B2BDEB4AE000FA164 /* StorageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C8A2BDEB4AE000FA164 /* StorageInteractor.swift */; };
+		DAC94C8E2BDEB4E9000FA164 /* StorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC94C8D2BDEB4E9000FA164 /* StorageDelegate.swift */; };
 		DADA865B2BBC0905006BC789 /* EditorAudioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */; };
 		DADA86602BBC0DDC006BC789 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DADA865F2BBC0DDC006BC789 /* AudioKit */; };
 		DADA86642BBC107C006BC789 /* DunneAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = DADA86632BBC107C006BC789 /* DunneAudioKit */; };
@@ -167,6 +172,11 @@
 		DAC94C752BDD7C49000FA164 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		DAC94C7E2BDD7C8F000FA164 /* RecordingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingInteractor.swift; sourceTree = "<group>"; };
 		DAC94C802BDD7E41000FA164 /* RecordingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingDelegate.swift; sourceTree = "<group>"; };
+		DAC94C842BDEAF1E000FA164 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		DAC94C862BDEAFD7000FA164 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
+		DAC94C882BDEB07E000FA164 /* StorageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCell.swift; sourceTree = "<group>"; };
+		DAC94C8A2BDEB4AE000FA164 /* StorageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInteractor.swift; sourceTree = "<group>"; };
+		DAC94C8D2BDEB4E9000FA164 /* StorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDelegate.swift; sourceTree = "<group>"; };
 		DADA865A2BBC0905006BC789 /* EditorAudioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorAudioInteractor.swift; sourceTree = "<group>"; };
 		DADA86662BBC29C0006BC789 /* View+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Style.swift"; sourceTree = "<group>"; };
 		DADA86682BBC2B25006BC789 /* View+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Pin.swift"; sourceTree = "<group>"; };
@@ -273,6 +283,7 @@
 				DADA86862BBDD4AB006BC789 /* Algorithms */,
 				DADA867B2BBDB19E006BC789 /* Common */,
 				DADA86782BBDB14E006BC789 /* Settings */,
+				DAC94C832BDEAF0B000FA164 /* Storage */,
 				DADA86652BBC29B3006BC789 /* Extensions */,
 				DADA86592BBC0826006BC789 /* Editor */,
 			);
@@ -422,6 +433,26 @@
 				DAC94C752BDD7C49000FA164 /* Note.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		DAC94C832BDEAF0B000FA164 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C8C2BDEB4DE000FA164 /* Protocols */,
+				DAC94C842BDEAF1E000FA164 /* ProjectModel.swift */,
+				DAC94C862BDEAFD7000FA164 /* StorageViewController.swift */,
+				DAC94C882BDEB07E000FA164 /* StorageCell.swift */,
+				DAC94C8A2BDEB4AE000FA164 /* StorageInteractor.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		DAC94C8C2BDEB4DE000FA164 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DAC94C8D2BDEB4E9000FA164 /* StorageDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		DADA86582BBC07D6006BC789 /* App */ = {
@@ -740,6 +771,7 @@
 				DADA86832BBDBBF5006BC789 /* FalseKeyboard.swift in Sources */,
 				DA2042E62BD736D600E04D5E /* ChordsView.swift in Sources */,
 				DADA86732BBC5069006BC789 /* PianoRollLogic.swift in Sources */,
+				DAC94C892BDEB07E000FA164 /* StorageCell.swift in Sources */,
 				DADA86752BBD8DD4006BC789 /* EditorToolbarView.swift in Sources */,
 				DADA866E2BBC4CE8006BC789 /* SwitUIAdapter.swift in Sources */,
 				DA2042E42BD729D000E04D5E /* RhythmView.swift in Sources */,
@@ -751,13 +783,17 @@
 				DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */,
 				DADA86692BBC2B25006BC789 /* View+Pin.swift in Sources */,
 				DADA86672BBC29C0006BC789 /* View+Style.swift in Sources */,
+				DAC94C8B2BDEB4AE000FA164 /* StorageInteractor.swift in Sources */,
 				DADA865B2BBC0905006BC789 /* EditorAudioInteractor.swift in Sources */,
+				DAC94C872BDEAFD7000FA164 /* StorageViewController.swift in Sources */,
 				DADA86B52BC99A43006BC789 /* SelectedNoteView.swift in Sources */,
 				DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */,
 				DADA86972BBF2F37006BC789 /* InstrumentPlayer.swift in Sources */,
+				DAC94C852BDEAF1E000FA164 /* ProjectModel.swift in Sources */,
 				DADA869C2BBF3135006BC789 /* ElectricMandolin.swift in Sources */,
 				DAC94C812BDD7E41000FA164 /* RecordingDelegate.swift in Sources */,
 				DADA867A2BBDB15E006BC789 /* SettingsViewController.swift in Sources */,
+				DAC94C8E2BDEB4E9000FA164 /* StorageDelegate.swift in Sources */,
 				DADA86A32BBF3873006BC789 /* InstrumentsCoding.swift in Sources */,
 				DADA86AE2BC6E05F006BC789 /* AlgorithmsWorker.swift in Sources */,
 				DADA86A52BC43DC2006BC789 /* Color+RGB.swift in Sources */,
