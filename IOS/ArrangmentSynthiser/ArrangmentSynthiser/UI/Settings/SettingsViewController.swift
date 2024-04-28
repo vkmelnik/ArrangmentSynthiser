@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController {
     var openButton = RetroUIButton.makeButton()
     var exportButton = RetroUIButton.makeButton()
     var tempoSlider = SliderView(name: "Темп: 120", value: 120, minimum: 10, maximum: 280)
-    var lengthSlider = SliderView(name: "Длина трека: 120", value: 16, minimum: 16, maximum: 128)
+    var lengthSlider = SliderView(name: "Длина трека: 16", value: 16, minimum: 16, maximum: 128)
     var doneButton = RetroUIButton.makeButton()
     var getMidi: (() -> Data?)?
 
