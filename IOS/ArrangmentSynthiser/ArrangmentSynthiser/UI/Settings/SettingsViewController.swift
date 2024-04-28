@@ -10,9 +10,11 @@ import UIKit
 class SettingsViewController: UIViewController {
     var nameField = UITextField()
     var openButton = RetroUIButton.makeButton()
+    var exportButton = RetroUIButton.makeButton()
     var tempoSlider = SliderView(name: "Темп: 120", value: 120, minimum: 10, maximum: 280)
     var lengthSlider = SliderView(name: "Длина трека: 120", value: 16, minimum: 16, maximum: 128)
     var doneButton = RetroUIButton.makeButton()
+    var getMidi: (() -> Data?)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,7 @@ class SettingsViewController: UIViewController {
     }
 
     private func configureUI() {
-        let stack = UIStackView(arrangedSubviews: [nameField, openButton, tempoSlider, lengthSlider])
+        let stack = UIStackView(arrangedSubviews: [nameField, openButton, exportButton, tempoSlider, lengthSlider])
         stack.axis = .vertical
         stack.spacing = 4
         view.addSubview(stack)
@@ -45,6 +47,9 @@ class SettingsViewController: UIViewController {
 
         openButton.setTitle("Открыть проект", for: .normal)
         openButton.addTarget(self, action: #selector(onOpenButton), for: .touchUpInside)
+
+        exportButton.setTitle("Экспортировать в MIDI", for: .normal)
+        exportButton.addTarget(self, action: #selector(onExportButton), for: .touchUpInside)
 
         nameField.text = StorageInteractor.shared.currentProjectName
         nameField.addTarget(self, action: #selector(onChangeProjectName), for: .editingChanged)
@@ -69,6 +74,22 @@ class SettingsViewController: UIViewController {
     @objc
     private func onOpenButton() {
         self.present(StorageViewController(), animated: true)
+    }
+
+    @objc
+    private func onExportButton() {
+        guard let data = getMidi?() else { return }
+        guard let url = StorageInteractor.shared.saveMIDI(
+            name: StorageInteractor.shared.currentProjectName, data: data
+        ) else {
+            return
+        }
+
+        DispatchQueue.main.async {
+            let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
 
     @objc

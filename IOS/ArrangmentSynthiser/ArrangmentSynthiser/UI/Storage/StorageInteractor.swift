@@ -35,6 +35,21 @@ class StorageInteractor {
         }
     }
 
+    func saveMIDI(name: String, data: Data) -> URL? {
+        do {
+            if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                in: .userDomainMask).first {
+                let pathWithFilename = documentDirectory.appendingPathComponent(name + ".midi")
+                try data.write(to: pathWithFilename)
+                return pathWithFilename
+            }
+        } catch {
+            print("Unable to save project.")
+        }
+
+        return nil
+    }
+
     func deleteProject(named: String) {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         do {

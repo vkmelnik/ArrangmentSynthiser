@@ -46,6 +46,7 @@ class EditorViewController: UIViewController {
     private func configureUI() {
         settingsViewController.tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
         settingsViewController.lengthSlider.slider.addTarget(self, action: #selector(onLengthChange), for: .valueChanged)
+        settingsViewController.getMidi = { self.loadTrack(); return self.audio.getMIDI() }
         configurePianoRoll()
         configureToolbar()
         configureAlgorithmsView()

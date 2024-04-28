@@ -122,7 +122,7 @@ class EditorAudioInteractor {
         midiForGeneration = nil
     }
 
-    private func getMIDI() -> Data? {
+    func getMIDI() -> Data? {
         guard let midiForGeneration = midiForGeneration else {
             guard let midi = instruments[3].getMidi() else {
                 return nil
