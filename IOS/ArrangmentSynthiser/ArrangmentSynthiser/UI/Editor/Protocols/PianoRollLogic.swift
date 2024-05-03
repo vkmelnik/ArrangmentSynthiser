@@ -11,4 +11,5 @@ protocol PianoRollDelegate: AnyObject {
     func onNotesChange(_ model: PianoRollModel)
     func onSelectionMoved()
     func onSelectionDone(_ notes: [PianoRollNote])
+    func showCopyPaste(_ value: Bool)
 }

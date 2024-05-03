@@ -76,6 +76,8 @@ class EditorViewController: UIViewController {
         toolbar.playButton.addTarget(self, action: #selector(onPlayButton), for: .touchUpInside)
         toolbar.stopButton.addTarget(self, action: #selector(onStopButton), for: .touchUpInside)
         toolbar.selectButton.addTarget(self, action: #selector(onSelectButton), for: .touchUpInside)
+        toolbar.copyButton.addTarget(self, action: #selector(onCopyButton), for: .touchUpInside)
+        toolbar.pasteButton.addTarget(self, action: #selector(onPasteButton), for: .touchUpInside)
         toolbar.settingsButton.addTarget(self, action: #selector(onSettingsButton), for: .touchUpInside)
         toolbar.algorithmsButton.addTarget(self, action: #selector(onAlgorithmsButton), for: .touchUpInside)
 
@@ -160,6 +162,18 @@ class EditorViewController: UIViewController {
             pianoRoll?.pianoRollSettings.scrollViewOn = !scrollViewOn
             toolbar.selectButton.setTitle(scrollViewOn ? "Подвинуть" : "Выделить", for: .normal)
         }
+    }
+
+    @objc
+    private func onCopyButton() {
+        pianoRoll?.pianoRollSettings.copy = !(pianoRoll?.pianoRollSettings.paste ?? false)
+        showCopyPaste(false)
+    }
+
+    @objc
+    private func onPasteButton() {
+        pianoRoll?.pianoRollSettings.paste = !(pianoRoll?.pianoRollSettings.paste ?? false)
+        showCopyPaste(false)
     }
 
     @objc
@@ -280,6 +294,11 @@ extension EditorViewController: PianoRollDelegate {
         } else {
             selectionModel = nil
         }
+    }
+
+    func showCopyPaste(_ value: Bool) {
+        toolbar.pasteButton.isHidden = !value
+        toolbar.copyButton.isHidden = !value
     }
 }
 

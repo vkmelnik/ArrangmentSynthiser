@@ -14,4 +14,6 @@ class PianoRollSettings: ObservableObject {
     @Published var currentInstrument: Int? = nil
     @Published var addedNotes: [PianoRollNote] = []
     @Published var tempo: Float = 1
+    @Published var copy: Bool = false
+    @Published var paste: Bool = false
 }

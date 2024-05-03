@@ -14,6 +14,7 @@ struct PianoRollView: View {
     let pianoRollDelegate: PianoRollDelegate?
     @State var model: PianoRollModel
     @State var selectedModel: PianoRollModel
+    @State var clipboard: [PianoRollNote] = []
     @State var selectionX: CGFloat = 185
     @State var selectionY: CGFloat = 291
     @State var selectionWidth: CGFloat = 50
@@ -48,6 +49,11 @@ struct PianoRollView: View {
                 }
 
                 selectedModel.notes = []
+            }
+
+        let longPressGesture = LongPressGesture(minimumDuration: 0.5)
+            .onEnded { action in
+                pianoRollDelegate?.showCopyPaste(true)
             }
 
         let dragGesture = DragGesture(minimumDistance: 2).onChanged { value in
@@ -110,7 +116,7 @@ struct PianoRollView: View {
                         ZStack {
                             // Выделенные ноты.
                             selectedPianoRoll.opacity(selectedModel.notes.count != 0 ? 1.0 : 0.0).offset(offset)
-                        }.gesture(selectionDragGesture)
+                        }.gesture(longPressGesture).simultaneousGesture(selectionDragGesture)
                         // Выделение.
                         Rectangle().fill(.gray).position(x: selectionX, y: selectionY)
                             .frame(width: selectionWidth, height: selectionHeight).opacity(selectionOn ? 0.5 : 0.0)
@@ -124,6 +130,14 @@ struct PianoRollView: View {
             }
         }.scrollDisabled(!pianoRollSettings.scrollViewOn).background(Color(white: 0.1)).onChange(of: model) { newValue in
             pianoRollDelegate?.onNotesChange(newValue)
+        }.onChange(of: pianoRollSettings.copy) { newValue in
+            clipboard = selectedModel.notes
+        }.onChange(of: pianoRollSettings.paste) { newValue in
+            model = PianoRollModel(
+                notes: model.notes + clipboard,
+                length: model.length,
+                height: model.height
+            )
         }.onChange(of: pianoRollSettings.length) { newValue in
             model = PianoRollModel(notes: model.notes.filter({ note in
                 Int(note.start) < newValue

@@ -49,6 +49,24 @@ class EditorToolbarView: UIView {
         return button
     }()
 
+    lazy var copyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("  Копировать  ", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
+        button.isHidden = true
+
+        return button
+    }()
+
+    lazy var pasteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("  Вставить  ", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.3344596538, green: 0.3641954376, blue: 0.4409706901, alpha: 1)
+        button.isHidden = true
+
+        return button
+    }()
+
     lazy var synthButton: UIButton = {
         let button = RetroUIButton.makeButton()
         button.setTitle("Синтезатор", for: .normal)
@@ -114,7 +132,7 @@ class EditorToolbarView: UIView {
         topView.pinBottom(to: topAnchor)
         layer.masksToBounds = false
 
-        let stack = RetroStack(arrangedSubviews: [settingsButton, selectButton, instrumentsButton])
+        let stack = RetroStack(arrangedSubviews: [settingsButton, selectButton, copyButton, pasteButton, instrumentsButton])
         addSubview(stack)
         stack.pinLeft(to: self, 10).priority = .init(900)
         stack.pinLeft(to: self.safeAreaLayoutGuide.leadingAnchor, -30, .grOE).priority = .init(1000)
