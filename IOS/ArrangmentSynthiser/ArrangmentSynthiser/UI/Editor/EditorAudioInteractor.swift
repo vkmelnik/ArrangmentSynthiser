@@ -135,6 +135,25 @@ class EditorAudioInteractor {
         return midiForGeneration
     }
 
+    func loadMIDI(from url: URL, completion: @escaping ([PianoRollNote]) -> Void) {
+        do {
+            let data = try Data(contentsOf: url)
+            let sequencer = AppleSequencer()
+            sequencer.loadMIDIFile(fromData: data)
+            guard sequencer.tracks.count > 0 else {
+                completion([])
+                return
+            }
+
+            let notes = sequencer.tracks[0].getMIDINoteData()
+            completion(notes.map({ noteData in
+                PianoRollNote(start: noteData.position.beats * 4, length: noteData.duration.beats * 4, pitch: Int(noteData.noteNumber))
+            }))
+        } catch {
+            return
+        }
+    }
+
     private func loadServerAnswer(data: Data?, error: Error?, completion: @escaping ([PianoRollNote], Error?) -> Void) {
         if let error = error {
             completion([], error)

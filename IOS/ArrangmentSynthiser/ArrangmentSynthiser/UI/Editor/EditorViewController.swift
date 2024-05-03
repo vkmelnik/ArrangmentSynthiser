@@ -47,6 +47,7 @@ class EditorViewController: UIViewController {
         settingsViewController.tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
         settingsViewController.lengthSlider.slider.addTarget(self, action: #selector(onLengthChange), for: .valueChanged)
         settingsViewController.getMidi = { self.loadTrack(); return self.audio.getMIDI() }
+        settingsViewController.onLoadMIDI = self.load
         configurePianoRoll()
         configureToolbar()
         configureAlgorithmsView()
@@ -305,5 +306,11 @@ extension EditorViewController: StorageDelegate {
 
             return note
         })
+    }
+
+    func load(_ midi: URL) {
+        audio.loadMIDI(from: midi) { notes in
+            self.pianoRoll?.pianoRollSettings.addedNotes = notes
+        }
     }
 }

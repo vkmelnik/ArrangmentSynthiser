@@ -11,10 +11,12 @@ class SettingsViewController: UIViewController {
     var nameField = UITextField()
     var openButton = RetroUIButton.makeButton()
     var exportButton = RetroUIButton.makeButton()
+    var importButton = RetroUIButton.makeButton()
     var tempoSlider = SliderView(name: "Темп: 120", value: 120, minimum: 10, maximum: 280)
     var lengthSlider = SliderView(name: "Длина трека: 16", value: 16, minimum: 16, maximum: 128)
     var doneButton = RetroUIButton.makeButton()
     var getMidi: (() -> Data?)?
+    var onLoadMIDI: ((URL) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +29,12 @@ class SettingsViewController: UIViewController {
     }
 
     private func configureUI() {
-        let stack = UIStackView(arrangedSubviews: [nameField, openButton, exportButton, tempoSlider, lengthSlider])
+        let stack = UIStackView(arrangedSubviews: [nameField, openButton, exportButton, importButton, tempoSlider, lengthSlider])
         stack.axis = .vertical
         stack.spacing = 4
         view.addSubview(stack)
-        stack.pinHorizontal(to: view, 20)
+        stack.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, 20)
+        stack.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, 20)
         stack.pinCenterY(to: view)
         tempoSlider.title.textColor = .white
         tempoSlider.slider.addTarget(self, action: #selector(onTempoChange), for: .valueChanged)
@@ -50,6 +53,9 @@ class SettingsViewController: UIViewController {
 
         exportButton.setTitle("Экспортировать в MIDI", for: .normal)
         exportButton.addTarget(self, action: #selector(onExportButton), for: .touchUpInside)
+
+        importButton.setTitle("Импортировать из MIDI", for: .normal)
+        importButton.addTarget(self, action: #selector(onImportButton), for: .touchUpInside)
 
         nameField.text = StorageInteractor.shared.currentProjectName
         nameField.addTarget(self, action: #selector(onChangeProjectName), for: .editingChanged)
@@ -93,7 +99,25 @@ class SettingsViewController: UIViewController {
     }
 
     @objc
+    private func onImportButton() {
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.midi])
+        documentPicker.allowsMultipleSelection = false
+        documentPicker.delegate = self
+        present(documentPicker, animated: true)
+    }
+
+    @objc
     private func onChangeProjectName() {
         StorageInteractor.shared.currentProjectName = nameField.text ?? "Новый проект 1"
+    }
+}
+
+extension SettingsViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {
+            return
+        }
+
+        onLoadMIDI?(url)
     }
 }
