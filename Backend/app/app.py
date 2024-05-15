@@ -5,11 +5,15 @@ from midi_parser import *
 from melody_generator import MelodyGenerator
 from rhythm_generator import RhythmGenerator
 from chord_generator import ChordsGenerator
+from drums_generator import DrumsGenerator
+from drums_analyzer import DrumsAnalyzer
 import music21
 from music21 import *
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+drumBeatsProbabilities, drumChordsProbabilities, drumsFragments = DrumsAnalyzer().read_and_parse_file("drum_patterns.txt")
+print("Drum patterns analysis complete.")
 
 @app.route('/melody', methods=['POST'])
 def get_melody():
@@ -60,6 +64,20 @@ def get_chords():
             scale = music21.scale.MinorScale(tonic)
 
     generator = ChordsGenerator(notes, 5, 0.5, 0.3, 5, scale)
+    newNotes = generator.generate()
+
+    filename = MelodyParser.encode(newNotes)
+    return send_file(filename, mimetype='audio/midi')
+
+@app.route('/drums', methods=['POST'])
+def get_drums():
+    midi_data = request.data
+
+    notes = MelodyParser.parse(midi_data)
+    syncopation = float(request.args.get('syncopation'))
+    complexity = float(request.args.get('complexity'))
+
+    generator = DrumsGenerator(notes, 5, 0.5, 0.01, 10, drumBeatsProbabilities, drumChordsProbabilities, drumsFragments, syncopation, complexity)
     newNotes = generator.generate()
 
     filename = MelodyParser.encode(newNotes)

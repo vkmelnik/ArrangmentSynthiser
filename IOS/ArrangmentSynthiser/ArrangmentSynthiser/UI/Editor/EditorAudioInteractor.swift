@@ -20,7 +20,7 @@ class EditorAudioInteractor {
     let instruments: [InstrumentPlayer] = [
         InstrumentPlayer(Synthiser()),
         InstrumentPlayer(ElectricMandolin()),
-        InstrumentPlayer(Percussion()),
+        InstrumentPlayer(Drums()),
         InstrumentPlayer(Synthiser())
     ]
     lazy var masterInstrument = instruments[3]
@@ -40,6 +40,7 @@ class EditorAudioInteractor {
         try? engine.start()
     }
 
+    // MARK: - Player actions
     func loadTrack(_ model: PianoRollModel) {
         instruments.forEach { instrument in
             instrument.sequencer.stop()
@@ -77,6 +78,7 @@ class EditorAudioInteractor {
         }
     }
 
+    // MARK: - Server actions
     func generateMelody(scale: MelodyScaleWithTonic, completion: @escaping ([PianoRollNote], Error?) -> Void) {
         guard let midi = getMIDI() else {
             completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
@@ -112,6 +114,24 @@ class EditorAudioInteractor {
         }
 
         let endpoint = AlgorithmEndpoints.rhythm.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: [])
+
+        algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
+            self.loadServerAnswer(data: data, error: error, completion: completion)
+        }
+    }
+
+    func generateDrums(syncopation: Float, complexity: Float, completion: @escaping ([PianoRollNote], Error?) -> Void) {
+        guard let midi = getMIDI() else {
+            completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
+            return
+        }
+
+        let parameters: RequestParameters = [
+            (key: "syncopation", value: syncopation.description),
+            (key: "complexity", value: complexity.description)
+        ]
+
+        let endpoint = AlgorithmEndpoints.drums.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: parameters)
 
         algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
             self.loadServerAnswer(data: data, error: error, completion: completion)
@@ -175,5 +195,4 @@ class EditorAudioInteractor {
             completion([], nil)
         }
     }
-        
 }

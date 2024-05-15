@@ -85,7 +85,7 @@ class EditorToolbarView: UIView {
 
     lazy var percussionButton: UIButton = {
         let button = RetroUIButton.makeButton()
-        button.setTitle("Перкуссия", for: .normal)
+        button.setTitle("Барабаны", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.3109903336, green: 0.3005154431, blue: 0.3101556599, alpha: 1)
 
         return button
