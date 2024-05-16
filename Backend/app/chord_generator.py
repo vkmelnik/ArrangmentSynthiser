@@ -51,7 +51,7 @@ class ChordsGenerator:
                         score_chords += 1
 
             for chord_pitch1 in chord1.notes:
-                if not music21.interval.Interval(pitch1, chord_pitch1).isConsonant():
+                if not music21.interval.Interval(pitch1, chord_pitch1).isConsonant() or pitch1 == chord_pitch1:
                         score_notes += 1 
 
         return score_chords + score_notes * 15

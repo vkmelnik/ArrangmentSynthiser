@@ -15,6 +15,8 @@ class DrumsView: AlgorithmView {
         super.init()
         stack.addArrangedSubview(syncopationSlider)
         stack.addArrangedSubview(complexitySlider)
+        syncopationSlider.title.textColor = .white
+        complexitySlider.title.textColor = .white
     }
 
     required init?(coder: NSCoder) {
