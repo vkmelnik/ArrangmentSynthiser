@@ -28,9 +28,11 @@ class EditorViewController: UIViewController {
     let rhythmView = RhythmView()
     let chordsView = ChordsView()
     let drumsView = DrumsView()
-    var scale: MelodyScaleWithTonic = MelodyScaleWithTonic(scale: .auto, tonic: "C")
+    let transposeView = TransposeView()
+    var fromScale: MelodyScaleWithTonic = MelodyScaleWithTonic(scale: .auto, tonic: "C")
+    var toScale: MelodyScaleWithTonic = MelodyScaleWithTonic(scale: .auto, tonic: "C")
 
-    lazy var algorithmsView = AlgorithmsView(views: [melodyView, rhythmView, chordsView, drumsView], titles: ["Сгенерировать мелодию", "Сгенерировать ритм", "Сгенерировать аккорды", "Сгенерировать барабаны"])
+    lazy var algorithmsView = AlgorithmsView(views: [melodyView, rhythmView, chordsView, drumsView, transposeView], titles: ["Сгенерировать мелодию", "Сгенерировать ритм", "Сгенерировать аккорды", "Сгенерировать барабаны", "Транспонировать"])
     var algorithmsViewOffConstraint: NSLayoutConstraint?
     var algorithmsViewOnConstraint: NSLayoutConstraint?
 
@@ -90,22 +92,36 @@ class EditorViewController: UIViewController {
 
         melodyView.generateButton.addTarget(self, action: #selector(onGenerateMelodyButton), for: .touchUpInside)
         melodyView.onScaleChange = { scale in
-            self.scale = MelodyScaleWithTonic(scale: scale, tonic: self.scale.tonic)
+            self.fromScale = MelodyScaleWithTonic(scale: scale, tonic: self.fromScale.tonic)
         }
         melodyView.onTonicChange = { tonic in
-            self.scale = MelodyScaleWithTonic(scale: self.scale.scale, tonic: tonic)
+            self.fromScale = MelodyScaleWithTonic(scale: self.fromScale.scale, tonic: tonic)
         }
 
         chordsView.generateButton.addTarget(self, action: #selector(onGenerateChordsButton), for: .touchUpInside)
         chordsView.onScaleChange = { scale in
-            self.scale = MelodyScaleWithTonic(scale: scale, tonic: self.scale.tonic)
+            self.fromScale = MelodyScaleWithTonic(scale: scale, tonic: self.fromScale.tonic)
         }
         chordsView.onTonicChange = { tonic in
-            self.scale = MelodyScaleWithTonic(scale: self.scale.scale, tonic: tonic)
+            self.fromScale = MelodyScaleWithTonic(scale: self.fromScale.scale, tonic: tonic)
         }
 
         rhythmView.generateButton.addTarget(self, action: #selector(onGenerateRhythmButton), for: .touchUpInside)
         drumsView.generateButton.addTarget(self, action: #selector(onGenerateDrumsButton), for: .touchUpInside)
+
+        transposeView.generateButton.addTarget(self, action: #selector(onTransposeButton), for: .touchUpInside)
+        transposeView.onScaleChange = { scale in
+            self.fromScale = MelodyScaleWithTonic(scale: scale, tonic: self.fromScale.tonic)
+        }
+        transposeView.onTonicChange = { tonic in
+            self.fromScale = MelodyScaleWithTonic(scale: self.fromScale.scale, tonic: tonic)
+        }
+        transposeView.onToScaleChange = { scale in
+            self.toScale = MelodyScaleWithTonic(scale: scale, tonic: self.fromScale.tonic)
+        }
+        transposeView.onToTonicChange = { tonic in
+            self.toScale = MelodyScaleWithTonic(scale: self.fromScale.scale, tonic: tonic)
+        }
     }
 
     private func configureRecording() {
@@ -228,7 +244,7 @@ class EditorViewController: UIViewController {
     @objc
     private func onGenerateMelodyButton(sender: UISlider, forEvent event: UIEvent) {
         loadTrack()
-        audio.generateMelody(scale: self.scale) { notes, error in
+        audio.generateMelody(scale: self.fromScale) { notes, error in
             self.pianoRoll?.pianoRollSettings.addedNotes = notes
         }
     }
@@ -237,6 +253,14 @@ class EditorViewController: UIViewController {
     private func onGenerateRhythmButton(sender: UISlider, forEvent event: UIEvent) {
         loadTrack()
         audio.generateRhythm { notes, error in
+            self.pianoRoll?.pianoRollSettings.addedNotes = notes
+        }
+    }
+
+    @objc
+    private func onTransposeButton(sender: UISlider, forEvent event: UIEvent) {
+        loadTrack()
+        audio.transpose(from: fromScale, to: toScale) { notes, error in
             self.pianoRoll?.pianoRollSettings.addedNotes = notes
         }
     }
@@ -263,7 +287,7 @@ class EditorViewController: UIViewController {
     @objc
     private func onGenerateChordsButton(sender: UISlider, forEvent event: UIEvent) {
         loadTrack()
-        audio.generateChords(scale: self.scale) { notes, error in
+        audio.generateChords(scale: self.fromScale) { notes, error in
             self.pianoRoll?.pianoRollSettings.addedNotes = notes
         }
     }

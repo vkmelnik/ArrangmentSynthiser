@@ -18,6 +18,7 @@ enum AlgorithmEndpoints {
     case rhythm
     case chords
     case drums
+    case transpose
 
     func getEndpoint(headers: HeaderModel, parameters: RequestParameters) -> AlgorithmEndpoint {
         switch self {
@@ -29,6 +30,8 @@ enum AlgorithmEndpoints {
             return AlgorithmEndpoint(compositPath: "/chords", headers: headers, parameters: parameters)
         case .drums:
             return AlgorithmEndpoint(compositPath: "/drums", headers: headers, parameters: parameters)
+        case .transpose:
+            return AlgorithmEndpoint(compositPath: "/transpose", headers: headers, parameters: parameters)
         }
     }
 }

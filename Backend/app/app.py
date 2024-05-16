@@ -7,6 +7,7 @@ from rhythm_generator import RhythmGenerator
 from chord_generator import ChordsGenerator
 from drums_generator import DrumsGenerator
 from drums_analyzer import DrumsAnalyzer
+from theory_worker import TheoryWorker
 import music21
 from music21 import *
 
@@ -32,6 +33,35 @@ def get_melody():
 
     generator = MelodyGenerator(notes, 5, 0.5, 0.3, 5, scale)
     newNotes = generator.generate()
+
+    filename = MelodyParser.encode(newNotes)
+    return send_file(filename, mimetype='audio/midi')
+
+@app.route('/transpose', methods=['POST'])
+def get_transpose():
+    midi_data = request.data
+
+    notes = MelodyParser.parse(midi_data)
+
+    fromTonic = request.args.get('fromTonic')
+    fromScaleName = request.args.get('fromScale')
+    fromScale = None
+    if fromTonic != None:
+        if fromScaleName == "Major":
+            fromScale = music21.scale.MajorScale(fromTonic)
+        elif fromScaleName == "Minor":
+            fromScale = music21.scale.MinorScale(fromTonic)
+    toTonic = request.args.get('toTonic')
+    toScaleName = request.args.get('toScale')
+    toScale = None
+    if fromTonic != None:
+        if toScaleName == "Major":
+            toScale = music21.scale.MajorScale(toTonic)
+        elif toScaleName == "Minor":
+            toScale = music21.scale.MinorScale(toTonic)
+
+    generator = TheoryWorker()
+    newNotes = generator.transpose(notes, fromScale, toScale)
 
     filename = MelodyParser.encode(newNotes)
     return send_file(filename, mimetype='audio/midi')

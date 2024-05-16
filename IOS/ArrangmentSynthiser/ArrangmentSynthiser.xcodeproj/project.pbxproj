@@ -19,6 +19,7 @@
 		DA43D8BB2BF3A959008D6B9F /* crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA43D8BA2BF3A959008D6B9F /* crash.wav */; };
 		DA43D8BD2BF3A971008D6B9F /* ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA43D8BC2BF3A971008D6B9F /* ride.wav */; };
 		DA43D8BF2BF3A98F008D6B9F /* Drums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43D8BE2BF3A98F008D6B9F /* Drums.swift */; };
+		DA43D8C32BF6AC08008D6B9F /* TransposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43D8C22BF6AC08008D6B9F /* TransposeView.swift */; };
 		DA5809102B5995DD00E49A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58090F2B5995DD00E49A0A /* AppDelegate.swift */; };
 		DA5809122B5995DD00E49A0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809112B5995DD00E49A0A /* SceneDelegate.swift */; };
 		DA5809142B5995DD00E49A0A /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5809132B5995DD00E49A0A /* EditorViewController.swift */; };
@@ -145,6 +146,7 @@
 		DA43D8BA2BF3A959008D6B9F /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
 		DA43D8BC2BF3A971008D6B9F /* ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ride.wav; sourceTree = "<group>"; };
 		DA43D8BE2BF3A98F008D6B9F /* Drums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drums.swift; sourceTree = "<group>"; };
+		DA43D8C22BF6AC08008D6B9F /* TransposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransposeView.swift; sourceTree = "<group>"; };
 		DA58090C2B5995DD00E49A0A /* ArrangmentSynthiser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArrangmentSynthiser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58090F2B5995DD00E49A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA5809112B5995DD00E49A0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				DA2042E32BD729D000E04D5E /* RhythmView.swift */,
 				DA2042E52BD736D600E04D5E /* ChordsView.swift */,
 				DAA142C42BF260E400C2F4F9 /* DrumsView.swift */,
+				DA43D8C22BF6AC08008D6B9F /* TransposeView.swift */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				DAC94C892BDEB07E000FA164 /* StorageCell.swift in Sources */,
 				DADA86752BBD8DD4006BC789 /* EditorToolbarView.swift in Sources */,
 				DADA866E2BBC4CE8006BC789 /* SwitUIAdapter.swift in Sources */,
+				DA43D8C32BF6AC08008D6B9F /* TransposeView.swift in Sources */,
 				DA2042E42BD729D000E04D5E /* RhythmView.swift in Sources */,
 				DADA86702BBC4F00006BC789 /* PianoRollView.swift in Sources */,
 				DADA86A02BBF35AF006BC789 /* Percussion.swift in Sources */,

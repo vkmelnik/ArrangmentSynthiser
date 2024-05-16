@@ -138,6 +138,27 @@ class EditorAudioInteractor {
         }
     }
 
+    func transpose(
+        from fromScale: MelodyScaleWithTonic,
+        to toScale: MelodyScaleWithTonic,
+        completion: @escaping ([PianoRollNote], Error?) -> Void
+    ) {
+        guard let midi = getMIDI() else {
+            completion([], NSErrorDomain(string: "Cannot endode MIDI") as? Error)
+            return
+        }
+
+        var parameters: RequestParameters = []
+        parameters.append(contentsOf: fromScale.scale == .auto ? [] : [(key: "fromScale", value: fromScale.scale.rawValue), (key: "fromTonic", value: fromScale.tonic)])
+        parameters.append(contentsOf: toScale.scale == .auto ? [] : [(key: "toScale", value: toScale.scale.rawValue), (key: "toTonic", value: toScale.tonic)])
+
+        let endpoint = AlgorithmEndpoints.transpose.getEndpoint(headers: ["Content-Type": "multipart/form-data"], parameters: parameters)
+
+        algorithmsWorker.applyAlgorithm(midi: midi, endpoint: endpoint) { data, error in
+            self.loadServerAnswer(data: data, error: error, completion: completion)
+        }
+    }
+
     func stopGeneration() {
         midiForGeneration = nil
     }
